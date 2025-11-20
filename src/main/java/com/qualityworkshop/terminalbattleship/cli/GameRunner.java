@@ -1,5 +1,6 @@
 package com.qualityworkshop.terminalbattleship.cli;
 
+import com.qualityworkshop.terminalbattleship.config.GameConfig;
 import com.qualityworkshop.terminalbattleship.game.GameEngine;
 import com.qualityworkshop.terminalbattleship.game.ShotResult;
 import com.qualityworkshop.terminalbattleship.rendering.BoardRenderer;
@@ -30,7 +31,9 @@ public class GameRunner {
             }
 
             ShotResult computerResult = gameEngine.computerShoots();
-            System.out.println("\nOrdinateur: " + computerResult.message());
+            if (!GameConfig.QUIET_MODE) {
+                System.out.println("\nOrdinateur: " + computerResult.message());
+            }
             if (computerResult.gameOver()) {
                 break;
             }
@@ -56,7 +59,9 @@ public class GameRunner {
             long duration = endTime - startTime;
             long seconds = TimeUnit.MILLISECONDS.toSeconds(duration);
 
-            System.out.printf("Réponse en %d secondes.\n", seconds);
+            if (!GameConfig.QUIET_MODE) {
+                System.out.printf("Réponse en %d secondes.\n", seconds);
+            }
 
             if (input.equalsIgnoreCase("quit")) {
                 System.exit(0);

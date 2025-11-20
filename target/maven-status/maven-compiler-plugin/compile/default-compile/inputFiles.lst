@@ -4,6 +4,7 @@ C:\Users\HP\IdeaProjects\battleship-java\src\main\java\com\qualityworkshop\termi
 C:\Users\HP\IdeaProjects\battleship-java\src\main\java\com\qualityworkshop\terminalbattleship\cli\GameRunner.java
 C:\Users\HP\IdeaProjects\battleship-java\src\main\java\com\qualityworkshop\terminalbattleship\board\Board.java
 C:\Users\HP\IdeaProjects\battleship-java\src\main\java\com\qualityworkshop\terminalbattleship\board\Coordinate.java
+C:\Users\HP\IdeaProjects\battleship-java\src\main\java\com\qualityworkshop\terminalbattleship\config\GameConfig.java
 C:\Users\HP\IdeaProjects\battleship-java\src\main\java\com\qualityworkshop\terminalbattleship\rendering\BoardRenderer.java
 C:\Users\HP\IdeaProjects\battleship-java\src\main\java\com\qualityworkshop\terminalbattleship\strategy\NoOpComputerStrategy.java
 C:\Users\HP\IdeaProjects\battleship-java\src\main\java\com\qualityworkshop\terminalbattleship\game\GameConfiguration.java

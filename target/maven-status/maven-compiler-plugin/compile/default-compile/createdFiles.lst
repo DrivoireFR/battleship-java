@@ -9,6 +9,7 @@ com\qualityworkshop\terminalbattleship\TerminalBattleshipApplication.class
 com\qualityworkshop\terminalbattleship\cli\GameRunner.class
 com\qualityworkshop\terminalbattleship\game\GameEngine$1.class
 com\qualityworkshop\terminalbattleship\game\ShotOutcome.class
+com\qualityworkshop\terminalbattleship\config\GameConfig.class
 com\qualityworkshop\terminalbattleship\rendering\BoardRenderer.class
 com\qualityworkshop\terminalbattleship\game\GameEngine.class
 com\qualityworkshop\terminalbattleship\game\ShotResult.class

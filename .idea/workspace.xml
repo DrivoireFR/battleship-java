@@ -4,34 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6140f3a9-5bc5-4ded-b345-8d036e971685" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/qualityworkshop/terminalbattleship/cli/GameRunner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/qualityworkshop/terminalbattleship/cli/GameRunner.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/qualityworkshop/terminalbattleship/cli/GameRunner.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/qualityworkshop/terminalbattleship/cli/GameRunner.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/cpd.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/cpd.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/jacoco.exec" beforeDir="false" afterPath="$PROJECT_DIR$/target/jacoco.exec" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/site/jacoco/com.qualityworkshop.terminalbattleship.cli/GameRunner.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/site/jacoco/com.qualityworkshop.terminalbattleship.cli/GameRunner.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/site/jacoco/com.qualityworkshop.terminalbattleship.cli/GameRunner.java.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/site/jacoco/com.qualityworkshop.terminalbattleship.cli/GameRunner.java.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/site/jacoco/com.qualityworkshop.terminalbattleship.cli/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/site/jacoco/com.qualityworkshop.terminalbattleship.cli/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/site/jacoco/com.qualityworkshop.terminalbattleship.cli/index.source.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/site/jacoco/com.qualityworkshop.terminalbattleship.cli/index.source.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/site/jacoco/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/site/jacoco/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/site/jacoco/jacoco-sessions.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/site/jacoco/jacoco-sessions.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/site/jacoco/jacoco.csv" beforeDir="false" afterPath="$PROJECT_DIR$/target/site/jacoco/jacoco.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/site/jacoco/jacoco.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/site/jacoco/jacoco.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire-reports/2025-11-19T17-34-47_812-jvmRun1-commands.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire-reports/2025-11-19T17-34-47_812-jvmRun1-events.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-com.qualityworkshop.terminalbattleship.game.GameEngineTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-com.qualityworkshop.terminalbattleship.game.GameEngineTest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-com.qualityworkshop.terminalbattleship.rendering.BoardRendererTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-com.qualityworkshop.terminalbattleship.rendering.BoardRendererTest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-com.qualityworkshop.terminalbattleship.strategy.RandomShotStrategyTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-com.qualityworkshop.terminalbattleship.strategy.RandomShotStrategyTest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire-reports/com.qualityworkshop.terminalbattleship.game.GameEngineTest.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/com.qualityworkshop.terminalbattleship.game.GameEngineTest.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire-reports/com.qualityworkshop.terminalbattleship.rendering.BoardRendererTest.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/com.qualityworkshop.terminalbattleship.rendering.BoardRendererTest.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire-reports/com.qualityworkshop.terminalbattleship.strategy.RandomShotStrategyTest.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/com.qualityworkshop.terminalbattleship.strategy.RandomShotStrategyTest.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/terminal-battleship-0.0.1-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/terminal-battleship-0.0.1-SNAPSHOT.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/qualityworkshop/terminalbattleship/game/GameEngineTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/qualityworkshop/terminalbattleship/game/GameEngineTest.class" afterDir="false" />
-    </list>
+    <list default="true" id="6140f3a9-5bc5-4ded-b345-8d036e971685" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -68,7 +41,7 @@
     "Spring Boot.TerminalBattleshipApplication.executor": "Run",
     "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultAutoModeForALLUsers.v1": "true",
     "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
-    "git-widget-placeholder": "feature/US5-timer-de-tour",
+    "git-widget-placeholder": "raniaAb",
     "ignore.virus.scanning.warn.message": "true",
     "junie.onboarding.icon.badge.shown": "true",
     "kotlin-language-version-configured": "true",
@@ -172,7 +145,7 @@
       <option name="presentableId" value="Default" />
       <updated>1763629654867</updated>
       <workItem from="1763629656262" duration="7055000" />
-      <workItem from="1763636765685" duration="494000" />
+      <workItem from="1763636765685" duration="807000" />
     </task>
     <servers />
   </component>

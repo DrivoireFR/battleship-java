@@ -1,3 +1,6 @@
 com\qualityworkshop\terminalbattleship\rendering\BoardRendererTest.class
 com\qualityworkshop\terminalbattleship\strategy\RandomShotStrategyTest.class
 com\qualityworkshop\terminalbattleship\game\GameEngineTest.class
+com\qualityworkshop\terminalbattleship\TerminalBattleshipApplicationTest.class
+com\qualityworkshop\terminalbattleship\config\GameConfigTest.class
+com\qualityworkshop\terminalbattleship\TerminalBattleshipApplicationTest$FakeGameRunner.class
