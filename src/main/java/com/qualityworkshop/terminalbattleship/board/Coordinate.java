@@ -15,18 +15,25 @@ public record Coordinate(int row, int column) {
 
     public static Coordinate fromInput(String input) {
         Objects.requireNonNull(input, "input");
-        String trimmed = input.trim().toUpperCase(Locale.ROOT);
-        if (trimmed.length() < 2 || trimmed.length() > 3) {
+
+        // ===== US1: Validation input vide =====
+        String trimmed = input.trim();
+        if (trimmed.isEmpty()) {
+            throw new IllegalArgumentException("L'entrée ne peut pas être vide");
+        }
+
+        String upperInput = trimmed.toUpperCase(Locale.ROOT);
+        if (upperInput.length() < 2 || upperInput.length() > 3) {
             throw new IllegalArgumentException("Format attendu: lettre + nombre (ex: B3)");
         }
-        char columnLetter = trimmed.charAt(0);
+        char columnLetter = upperInput.charAt(0);
         int columnIndex = COLUMNS.indexOf(columnLetter);
         if (columnIndex < 0) {
             throw new IllegalArgumentException("Lettre hors grille: " + columnLetter);
         }
         int rowValue;
         try {
-            rowValue = Integer.parseInt(trimmed.substring(1));
+            rowValue = Integer.parseInt(upperInput.substring(1));
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException("Index de ligne invalide");
         }
