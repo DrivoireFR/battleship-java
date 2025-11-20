@@ -2,7 +2,7 @@
 <pmd-cpd xmlns="https://pmd-code.org/schema/cpd-report"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          pmdVersion="7.3.0"
-         timestamp="2025-11-20T11:57:05.2013396+01:00"
+         timestamp="2025-11-20T12:17:44.9820939+01:00"
          version="1.0.0"
          xsi:schemaLocation="https://pmd-code.org/schema/cpd-report https://pmd.github.io/schema/cpd-report_1_0_0.xsd">
    <file path="C:\Users\kevin\Documents\ESGI\Sec-Opti\battleship-java\src\main\java\com\qualityworkshop\terminalbattleship\TerminalBattleshipApplication.java"
@@ -14,7 +14,7 @@
    <file path="C:\Users\kevin\Documents\ESGI\Sec-Opti\battleship-java\src\main\java\com\qualityworkshop\terminalbattleship\board\Coordinate.java"
          totalNumberOfTokens="224"/>
    <file path="C:\Users\kevin\Documents\ESGI\Sec-Opti\battleship-java\src\main\java\com\qualityworkshop\terminalbattleship\cli\GameRunner.java"
-         totalNumberOfTokens="657"/>
+         totalNumberOfTokens="740"/>
    <file path="C:\Users\kevin\Documents\ESGI\Sec-Opti\battleship-java\src\main\java\com\qualityworkshop\terminalbattleship\game\GameConfiguration.java"
          totalNumberOfTokens="106"/>
    <file path="C:\Users\kevin\Documents\ESGI\Sec-Opti\battleship-java\src\main\java\com\qualityworkshop\terminalbattleship\game\GameEngine.java"

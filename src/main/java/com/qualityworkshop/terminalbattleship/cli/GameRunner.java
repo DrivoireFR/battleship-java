@@ -4,6 +4,8 @@ import com.qualityworkshop.terminalbattleship.game.GameEngine;
 import com.qualityworkshop.terminalbattleship.game.ShotResult;
 import com.qualityworkshop.terminalbattleship.rendering.BoardRenderer;
 import org.springframework.stereotype.Component;
+import com.qualityworkshop.terminalbattleship.game.ShotOutcome;
+import com.qualityworkshop.terminalbattleship.game.ShotResult;
 
 import java.util.Scanner;
 
@@ -12,6 +14,7 @@ public class GameRunner {
 
     private final GameEngine gameEngine;
     private final Scanner scanner;
+    private static final long TURN_TIMEOUT_MILLIS = 10_000L; // 10 secondes
 
     public GameRunner(GameEngine gameEngine) {
         this.gameEngine = gameEngine;
@@ -66,18 +69,41 @@ public class GameRunner {
 
     private ShotResult askForPlayerShot() {
         while (true) {
-            System.out.print("Entrez une coordonnée (ex: e5): ");
-            String input = scanner.nextLine().trim();
+            long startTime = System.currentTimeMillis();
 
-            if (input.equalsIgnoreCase("quit")) {
-                System.exit(0);
+            System.out.print("Entrez une coordonnée (10s max, ex: e5, 'help', 'auto', 'quit') : ");
+            String input = scanner.nextLine();
+
+            long elapsed = System.currentTimeMillis() - startTime;
+
+            // US5 : timer dépassé → tour perdu
+            if (elapsed > TURN_TIMEOUT_MILLIS) {
+                System.out.println("\n⏱️ Temps écoulé (" + (elapsed / 1000) + "s). Vous perdez votre tour.");
+                return new ShotResult(
+                        null,
+                        ShotOutcome.MISS,
+                        false,
+                        "Temps dépassé : aucun tir effectué."
+                );
             }
+
+            if (input == null) {
+                System.out.println("Entrée invalide.");
+                continue;
+            }
+
+            input = input.trim();
 
             // US3 : commande help
             if (input.equalsIgnoreCase("help")) {
                 displayHelp();
                 // on ne tire pas, on redemande une coordonnée
                 continue;
+            }
+
+            // quit
+            if (input.equalsIgnoreCase("quit")) {
+                System.exit(0);
             }
 
             // US10 : commande auto
@@ -87,6 +113,7 @@ public class GameRunner {
                 return autoResult;
             }
 
+            // US1 : entrée vide
             if (!isInputValid(input)) {
                 System.out.println("Entrée invalide : vous devez saisir une coordonnée.");
                 continue;
@@ -99,6 +126,7 @@ public class GameRunner {
             }
         }
     }
+
 
     // US3 : affichage de l'aide
     private void displayHelp() {

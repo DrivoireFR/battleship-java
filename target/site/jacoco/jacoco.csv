@@ -1,5 +1,5 @@
 GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
-Terminal Battleship,com.qualityworkshop.terminalbattleship.cli,GameRunner,249,0,28,0,74,0,25,0,11,0
+Terminal Battleship,com.qualityworkshop.terminalbattleship.cli,GameRunner,281,0,32,0,83,0,27,0,11,0
 Terminal Battleship,com.qualityworkshop.terminalbattleship.rendering,BoardRenderer,0,63,0,6,0,11,0,4,0,1
 Terminal Battleship,com.qualityworkshop.terminalbattleship.strategy,RandomShotStrategy,6,26,0,2,2,7,1,3,1,2
 Terminal Battleship,com.qualityworkshop.terminalbattleship.strategy,NoOpComputerStrategy,0,9,0,0,0,4,0,2,0,2
