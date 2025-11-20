@@ -44,12 +44,16 @@ public class GameRunner {
         System.out.println(BoardRenderer.render(gameEngine.computerBoard(), false));
     }
 
-    private ShotResult askForPlayerShot() {
+    ShotResult askForPlayerShot() {
         while (true) {
             System.out.print("Entrez une coordonnée (ex: e5): ");
             String input = scanner.nextLine().trim();
             if (input.equalsIgnoreCase("quit")) {
                 System.exit(0);
+            }
+            if (isHelp(input)) {
+                showHelp();
+                continue;
             }
             try {
                 return gameEngine.playerShoots(input);
@@ -67,5 +71,22 @@ public class GameRunner {
         } else {
             System.out.println("\nPartie interrompue.");
         }
+    }
+
+    public void showHelp() {
+        System.out.println("""
+            Commandes disponibles :
+            - Entrer une coordonnée de tir (ex: A2)
+            - help : afficher cette aide
+            - quit : quitter la partie
+            
+            Règles :
+            - Toucher les navires ennemis jusqu'à les couler.
+            - Le premier à détruire toute la flotte adverse gagne.
+            """);
+    }
+
+    public boolean isHelp(String input) {
+        return input != null && input.trim().equalsIgnoreCase("help");
     }
 }

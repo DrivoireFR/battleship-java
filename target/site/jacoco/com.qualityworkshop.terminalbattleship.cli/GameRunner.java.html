@@ -13,10 +13,10 @@ public class GameRunner {
     private final GameEngine gameEngine;
     private final Scanner scanner;
 
-<span class="nc" id="L16">    public GameRunner(GameEngine gameEngine) {</span>
-<span class="nc" id="L17">        this.gameEngine = gameEngine;</span>
-<span class="nc" id="L18">        this.scanner = new Scanner(System.in);</span>
-<span class="nc" id="L19">    }</span>
+<span class="fc" id="L16">    public GameRunner(GameEngine gameEngine) {</span>
+<span class="fc" id="L17">        this.gameEngine = gameEngine;</span>
+<span class="fc" id="L18">        this.scanner = new Scanner(System.in);</span>
+<span class="fc" id="L19">    }</span>
 
     public void start() {
 <span class="nc" id="L22">        System.out.println(&quot;Bienvenue dans Terminal Battleship ! Tapez 'quit' pour arrêter.\n&quot;);</span>
@@ -44,29 +44,50 @@ public class GameRunner {
 <span class="nc" id="L44">        System.out.println(BoardRenderer.render(gameEngine.computerBoard(), false));</span>
 <span class="nc" id="L45">    }</span>
 
-    private ShotResult askForPlayerShot() {
+    ShotResult askForPlayerShot() {
         while (true) {
 <span class="nc" id="L49">            System.out.print(&quot;Entrez une coordonnée (ex: e5): &quot;);</span>
 <span class="nc" id="L50">            String input = scanner.nextLine().trim();</span>
 <span class="nc bnc" id="L51" title="All 2 branches missed.">            if (input.equalsIgnoreCase(&quot;quit&quot;)) {</span>
 <span class="nc" id="L52">                System.exit(0);</span>
             }
-            try {
-<span class="nc" id="L55">                return gameEngine.playerShoots(input);</span>
-<span class="nc" id="L56">            } catch (IllegalArgumentException ex) {</span>
-<span class="nc" id="L57">                System.out.println(&quot;Entrée invalide: &quot; + ex.getMessage());</span>
+<span class="nc bnc" id="L54" title="All 2 branches missed.">            if (isHelp(input)) {</span>
+<span class="nc" id="L55">                showHelp();</span>
+<span class="nc" id="L56">                continue;</span>
             }
-<span class="nc" id="L59">        }</span>
+            try {
+<span class="nc" id="L59">                return gameEngine.playerShoots(input);</span>
+<span class="nc" id="L60">            } catch (IllegalArgumentException ex) {</span>
+<span class="nc" id="L61">                System.out.println(&quot;Entrée invalide: &quot; + ex.getMessage());</span>
+            }
+<span class="nc" id="L63">        }</span>
     }
 
     private void endGameMessage() {
-<span class="nc bnc" id="L63" title="All 2 branches missed.">        if (gameEngine.isComputerFleetDestroyed()) {</span>
-<span class="nc" id="L64">            System.out.println(&quot;\nBravo, vous avez coulé tous les navires adverses!&quot;);</span>
-<span class="nc bnc" id="L65" title="All 2 branches missed.">        } else if (gameEngine.isPlayerFleetDestroyed()) {</span>
-<span class="nc" id="L66">            System.out.println(&quot;\nDommage! L'ordinateur a gagné cette fois.&quot;);</span>
+<span class="nc bnc" id="L67" title="All 2 branches missed.">        if (gameEngine.isComputerFleetDestroyed()) {</span>
+<span class="nc" id="L68">            System.out.println(&quot;\nBravo, vous avez coulé tous les navires adverses!&quot;);</span>
+<span class="nc bnc" id="L69" title="All 2 branches missed.">        } else if (gameEngine.isPlayerFleetDestroyed()) {</span>
+<span class="nc" id="L70">            System.out.println(&quot;\nDommage! L'ordinateur a gagné cette fois.&quot;);</span>
         } else {
-<span class="nc" id="L68">            System.out.println(&quot;\nPartie interrompue.&quot;);</span>
+<span class="nc" id="L72">            System.out.println(&quot;\nPartie interrompue.&quot;);</span>
         }
-<span class="nc" id="L70">    }</span>
+<span class="nc" id="L74">    }</span>
+
+    public void showHelp() {
+<span class="nc" id="L77">        System.out.println(&quot;&quot;&quot;</span>
+            Commandes disponibles :
+            - Entrer une coordonnée de tir (ex: A2)
+            - help : afficher cette aide
+            - quit : quitter la partie
+            
+            Règles :
+            - Toucher les navires ennemis jusqu'à les couler.
+            - Le premier à détruire toute la flotte adverse gagne.
+            &quot;&quot;&quot;);
+<span class="nc" id="L87">    }</span>
+
+    public boolean isHelp(String input) {
+<span class="pc bpc" id="L90" title="1 of 4 branches missed.">        return input != null &amp;&amp; input.trim().equalsIgnoreCase(&quot;help&quot;);</span>
+    }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>
