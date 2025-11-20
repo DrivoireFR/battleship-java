@@ -20,26 +20,42 @@ public class GameRunner {
 
     public void start() {
         System.out.println("Bienvenue dans Terminal Battleship ! Tapez 'quit' pour arrêter.\n");
+
         while (!gameEngine.isComputerFleetDestroyed() && !gameEngine.isPlayerFleetDestroyed()) {
+
+            // Affichage des plateaux
             displayBoards();
+
+            // Tir du joueur
             ShotResult playerResult = askForPlayerShot();
             System.out.println(playerResult.message());
+
+            // Affichage historique joueur
+            displayPlayerShotHistory();
+
             if (playerResult.gameOver()) {
                 break;
             }
 
+            // Tir ordinateur
             ShotResult computerResult = gameEngine.computerShoots();
             System.out.println("\nOrdinateur: " + computerResult.message());
+
+            // Affichage historique IA
+            displayComputerShotHistory();
+
             if (computerResult.gameOver()) {
                 break;
             }
         }
+
         endGameMessage();
     }
 
     private void displayBoards() {
         System.out.println("\nVotre grille");
         System.out.println(BoardRenderer.render(gameEngine.playerBoard(), true));
+
         System.out.println("\nGrille adverse (brouillard)");
         System.out.println(BoardRenderer.render(gameEngine.computerBoard(), false));
     }
@@ -48,24 +64,52 @@ public class GameRunner {
         return input != null && !input.trim().isEmpty();
     }
 
-
     private ShotResult askForPlayerShot() {
         while (true) {
             System.out.print("Entrez une coordonnée (ex: e5): ");
             String input = scanner.nextLine().trim();
+
             if (input.equalsIgnoreCase("quit")) {
                 System.exit(0);
             }
+
             if (!isInputValid(input)) {
                 System.out.println("Entrée invalide : vous devez saisir une coordonnée.");
-                continue; // revient au début de la boucle
+                continue;
             }
+
             try {
                 return gameEngine.playerShoots(input);
             } catch (IllegalArgumentException ex) {
                 System.out.println("Entrée invalide: " + ex.getMessage());
             }
         }
+    }
+
+    // US2 - Affichage historique joueur
+    private void displayPlayerShotHistory() {
+        System.out.println("\nHistorique des derniers tirs du joueur (max 3) :");
+        if (gameEngine.lastPlayerShots().isEmpty()) {
+            System.out.println("Aucun tir enregistré.");
+            return;
+        }
+        gameEngine.lastPlayerShots().forEach(shot ->
+                System.out.println("- " + shot.coordinate() + " → " + shot.outcome())
+        );
+        System.out.println("-----------------------------------");
+    }
+
+    // US2 - Affichage historique ordinateur
+    private void displayComputerShotHistory() {
+        System.out.println("\nHistorique des derniers tirs de l'ordinateur (max 3) :");
+        if (gameEngine.lastComputerShots().isEmpty()) {
+            System.out.println("Aucun tir enregistré.");
+            return;
+        }
+        gameEngine.lastComputerShots().forEach(shot ->
+                System.out.println("- " + shot.coordinate() + " → " + shot.outcome())
+        );
+        System.out.println("-----------------------------------");
     }
 
     private void endGameMessage() {
