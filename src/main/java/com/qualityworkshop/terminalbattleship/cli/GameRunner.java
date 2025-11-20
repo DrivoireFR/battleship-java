@@ -44,13 +44,20 @@ public class GameRunner {
         System.out.println(BoardRenderer.render(gameEngine.computerBoard(), false));
     }
 
-    private ShotResult askForPlayerShot() {
+    public ShotResult askForPlayerShot() {
         while (true) {
             System.out.print("Entrez une coordonnée (ex: e5): ");
             String input = scanner.nextLine().trim();
+
             if (input.equalsIgnoreCase("quit")) {
                 System.exit(0);
             }
+
+            if (input.isBlank()) {
+                System.out.println("Entrée vide. Veuillez saisir une coordonnée.");
+                continue;
+            }
+
             try {
                 return gameEngine.playerShoots(input);
             } catch (IllegalArgumentException ex) {
@@ -58,6 +65,7 @@ public class GameRunner {
             }
         }
     }
+
 
     private void endGameMessage() {
         if (gameEngine.isComputerFleetDestroyed()) {
