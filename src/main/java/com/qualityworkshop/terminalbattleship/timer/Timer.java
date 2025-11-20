@@ -1,31 +1,21 @@
 package com.qualityworkshop.terminalbattleship.timer;
 
-import java.time.Duration;
-import java.time.Instant;
-
 public class Timer {
 
-    private Instant startTime;
-    private Instant endTime;
+    private long startTime;
+    private long endTime;
 
     public void start() {
-        startTime = Instant.now();
-        endTime = null;
+        startTime = System.currentTimeMillis();
     }
 
     public void stop() {
-        if (startTime == null) {
-            throw new IllegalStateException("Le timer n'a pas été démarré.");
-        }
-        endTime = Instant.now();
+        endTime = System.currentTimeMillis();
     }
 
-    public long getElapsedSeconds() {
-        if (startTime == null) {
-            throw new IllegalStateException("Le timer n'a pas été démarré.");
-        }
-        Instant effectiveEnd = (endTime != null) ? endTime : Instant.now();
-        return Duration.between(startTime, effectiveEnd).getSeconds();
+    public String displayElapsedTime() {
+        long elapsedMs = endTime - startTime;
+        double elapsedSeconds = elapsedMs / 1000.0;
+        return String.format("Réponse en %.2f secondes", elapsedSeconds);
     }
-
 }

@@ -3,6 +3,7 @@ package com.qualityworkshop.terminalbattleship.cli;
 import com.qualityworkshop.terminalbattleship.game.GameEngine;
 import com.qualityworkshop.terminalbattleship.game.ShotResult;
 import com.qualityworkshop.terminalbattleship.rendering.BoardRenderer;
+import com.qualityworkshop.terminalbattleship.timer.Timer;
 import org.springframework.stereotype.Component;
 
 import java.util.Scanner;
@@ -46,8 +47,15 @@ public class GameRunner {
 
     private ShotResult askForPlayerShot() {
         while (true) {
+            Timer timer = new Timer();
+            timer.start();
+
             System.out.print("Entrez une coordonnée (ex: e5): ");
             String input = scanner.nextLine().trim();
+
+            timer.stop();
+            System.out.println(timer.displayElapsedTime());
+
             if (input.equalsIgnoreCase("quit")) {
                 System.exit(0);
             }
