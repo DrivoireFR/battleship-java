@@ -12,6 +12,7 @@ public class GameEngine {
     private final Board playerBoard;
     private final Board computerBoard;
     private final ShotStrategy computerStrategy;
+    private final ShotHistory shotHistory;
 
     public GameEngine(@Qualifier("playerBoard") Board playerBoard,
                       @Qualifier("computerBoard") Board computerBoard,
@@ -19,11 +20,13 @@ public class GameEngine {
         this.playerBoard = playerBoard;
         this.computerBoard = computerBoard;
         this.computerStrategy = computerStrategy;
+        this.shotHistory = new ShotHistory();
     }
 
     public ShotResult playerShoots(String coordinateInput) {
         Coordinate coordinate = Coordinate.fromInput(coordinateInput);
         ShotOutcome outcome = computerBoard.shoot(coordinate);
+        shotHistory.record("Vous", coordinate, outcome);
         return new ShotResult(
                 coordinate,
                 outcome,
@@ -34,6 +37,7 @@ public class GameEngine {
     public ShotResult computerShoots() {
         Coordinate target = computerStrategy.pickTarget(playerBoard);
         ShotOutcome outcome = playerBoard.shoot(target);
+        shotHistory.record("IA", target, outcome);
         return new ShotResult(
                 target,
                 outcome,
@@ -57,13 +61,17 @@ public class GameEngine {
         return computerBoard;
     }
 
+    public ShotHistory shotHistory() {
+        return shotHistory;
+    }
+
     private String messageFor(String shooter, ShotOutcome outcome) {
         return switch (outcome) {
-            case HIT -> shooter + " a touché un navire !";
-            case MISS -> shooter + " a tiré dans l'eau.";
-            case ALREADY_TARGETED -> shooter + " avait déjà visé cette case.";
-            case INVALID -> shooter + " a visé hors de la grille !";
-            case ALL_SUNK -> shooter + " vient de couler la dernière cible !";
+            case HIT -> shooter + " a touchÃ© un navire !";
+            case MISS -> shooter + " a tirÃ© dans l'eau.";
+            case ALREADY_TARGETED -> shooter + " avait dÃ©jÃ  visÃ© cette case.";
+            case INVALID -> shooter + " a visÃ© hors de la grille !";
+            case ALL_SUNK -> shooter + " vient de couler la derniÃ¨re cible !";
         };
     }
 }
