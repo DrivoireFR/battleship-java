@@ -48,9 +48,6 @@ public class GameRunner {
         while (true) {
             System.out.print("Entrez une coordonnée (ex: e5): ");
             String input = scanner.nextLine().trim();
-            if (input.equalsIgnoreCase("quit")) {
-                System.exit(0);
-            }
             try {
                 return gameEngine.playerShoots(input);
             } catch (IllegalArgumentException ex) {
@@ -67,5 +64,25 @@ public class GameRunner {
         } else {
             System.out.println("\nPartie interrompue.");
         }
+    }
+
+    void verifierInputJoueur(String input){
+        if (input.equalsIgnoreCase("quit")) {
+            System.exit(0);
+        }
+        else if (input.equalsIgnoreCase("help")) {
+            afficherRegles();
+        }
+    }
+
+    void afficherRegles() {
+        System.out.println("=== RÈGLES DU JEU ===");
+        System.out.println("1. Le but est de couler les navires de l'adversaire.");
+        System.out.println("2. Chaque joueur dispose d'une grille sur laquelle il place ses navires.");
+        System.out.println("3. Les joueurs jouent à tour de rôle en entrant des coordonnées.");
+        System.out.println("4. Les commandes possibles sont :");
+        System.out.println("   - help : afficher ces règles.");
+        System.out.println("   - quit : quitter le jeu.");
+        System.out.println("=====================");
     }
 }
