@@ -4,6 +4,8 @@ import com.qualityworkshop.terminalbattleship.game.GameEngine;
 import com.qualityworkshop.terminalbattleship.game.ShotResult;
 import com.qualityworkshop.terminalbattleship.rendering.BoardRenderer;
 import org.springframework.stereotype.Component;
+import com.qualityworkshop.terminalbattleship.game.ShotOutcome;
+import com.qualityworkshop.terminalbattleship.game.ShotResult;
 
 import java.util.Scanner;
 
@@ -12,139 +14,165 @@ public class GameRunner {
 
     private final GameEngine gameEngine;
     private final Scanner scanner;
+    private static final long TURN_TIMEOUT_MILLIS = 10_000L; // 10 secondes
 
-<span class="nc" id="L16">    public GameRunner(GameEngine gameEngine) {</span>
-<span class="nc" id="L17">        this.gameEngine = gameEngine;</span>
-<span class="nc" id="L18">        this.scanner = new Scanner(System.in);</span>
-<span class="nc" id="L19">    }</span>
+<span class="nc" id="L19">    public GameRunner(GameEngine gameEngine) {</span>
+<span class="nc" id="L20">        this.gameEngine = gameEngine;</span>
+<span class="nc" id="L21">        this.scanner = new Scanner(System.in);</span>
+<span class="nc" id="L22">    }</span>
 
     public void start() {
-<span class="nc" id="L22">        System.out.println(&quot;Bienvenue dans Terminal Battleship ! Tapez 'quit' pour arrêter.\n&quot;);</span>
+<span class="nc" id="L25">        System.out.println(&quot;Bienvenue dans Terminal Battleship ! Tapez 'quit' pour arrêter.\n&quot;);</span>
 
-<span class="nc bnc" id="L24" title="All 4 branches missed.">        while (!gameEngine.isComputerFleetDestroyed() &amp;&amp; !gameEngine.isPlayerFleetDestroyed()) {</span>
+<span class="nc bnc" id="L27" title="All 4 branches missed.">        while (!gameEngine.isComputerFleetDestroyed() &amp;&amp; !gameEngine.isPlayerFleetDestroyed()) {</span>
 
             // Affichage des plateaux
-<span class="nc" id="L27">            displayBoards();</span>
+<span class="nc" id="L30">            displayBoards();</span>
 
             // Tir du joueur
-<span class="nc" id="L30">            ShotResult playerResult = askForPlayerShot();</span>
-<span class="nc" id="L31">            System.out.println(playerResult.message());</span>
+<span class="nc" id="L33">            ShotResult playerResult = askForPlayerShot();</span>
+<span class="nc" id="L34">            System.out.println(playerResult.message());</span>
 
             // Affichage historique joueur
-<span class="nc" id="L34">            displayPlayerShotHistory();</span>
+<span class="nc" id="L37">            displayPlayerShotHistory();</span>
 
-<span class="nc bnc" id="L36" title="All 2 branches missed.">            if (playerResult.gameOver()) {</span>
-<span class="nc" id="L37">                break;</span>
+<span class="nc bnc" id="L39" title="All 2 branches missed.">            if (playerResult.gameOver()) {</span>
+<span class="nc" id="L40">                break;</span>
             }
 
             // Tir ordinateur
-<span class="nc" id="L41">            ShotResult computerResult = gameEngine.computerShoots();</span>
-<span class="nc" id="L42">            System.out.println(&quot;\nOrdinateur: &quot; + computerResult.message());</span>
+<span class="nc" id="L44">            ShotResult computerResult = gameEngine.computerShoots();</span>
+<span class="nc" id="L45">            System.out.println(&quot;\nOrdinateur: &quot; + computerResult.message());</span>
 
             // Affichage historique IA
-<span class="nc" id="L45">            displayComputerShotHistory();</span>
+<span class="nc" id="L48">            displayComputerShotHistory();</span>
 
-<span class="nc bnc" id="L47" title="All 2 branches missed.">            if (computerResult.gameOver()) {</span>
-<span class="nc" id="L48">                break;</span>
+<span class="nc bnc" id="L50" title="All 2 branches missed.">            if (computerResult.gameOver()) {</span>
+<span class="nc" id="L51">                break;</span>
             }
-<span class="nc" id="L50">        }</span>
+<span class="nc" id="L53">        }</span>
 
-<span class="nc" id="L52">        endGameMessage();</span>
-<span class="nc" id="L53">    }</span>
+<span class="nc" id="L55">        endGameMessage();</span>
+<span class="nc" id="L56">    }</span>
 
     private void displayBoards() {
-<span class="nc" id="L56">        System.out.println(&quot;\nVotre grille&quot;);</span>
-<span class="nc" id="L57">        System.out.println(BoardRenderer.render(gameEngine.playerBoard(), true));</span>
+<span class="nc" id="L59">        System.out.println(&quot;\nVotre grille&quot;);</span>
+<span class="nc" id="L60">        System.out.println(BoardRenderer.render(gameEngine.playerBoard(), true));</span>
 
-<span class="nc" id="L59">        System.out.println(&quot;\nGrille adverse (brouillard)&quot;);</span>
-<span class="nc" id="L60">        System.out.println(BoardRenderer.render(gameEngine.computerBoard(), false));</span>
-<span class="nc" id="L61">    }</span>
+<span class="nc" id="L62">        System.out.println(&quot;\nGrille adverse (brouillard)&quot;);</span>
+<span class="nc" id="L63">        System.out.println(BoardRenderer.render(gameEngine.computerBoard(), false));</span>
+<span class="nc" id="L64">    }</span>
 
     private boolean isInputValid(String input) {
-<span class="nc bnc" id="L64" title="All 4 branches missed.">        return input != null &amp;&amp; !input.trim().isEmpty();</span>
+<span class="nc bnc" id="L67" title="All 4 branches missed.">        return input != null &amp;&amp; !input.trim().isEmpty();</span>
     }
 
     private ShotResult askForPlayerShot() {
         while (true) {
-<span class="nc" id="L69">            System.out.print(&quot;Entrez une coordonnée (ex: e5): &quot;);</span>
-<span class="nc" id="L70">            String input = scanner.nextLine().trim();</span>
+<span class="nc" id="L72">            long startTime = System.currentTimeMillis();</span>
 
-<span class="nc bnc" id="L72" title="All 2 branches missed.">            if (input.equalsIgnoreCase(&quot;quit&quot;)) {</span>
-<span class="nc" id="L73">                System.exit(0);</span>
+<span class="nc" id="L74">            System.out.print(&quot;Entrez une coordonnée (10s max, ex: e5, 'help', 'auto', 'quit') : &quot;);</span>
+<span class="nc" id="L75">            String input = scanner.nextLine();</span>
+
+<span class="nc" id="L77">            long elapsed = System.currentTimeMillis() - startTime;</span>
+
+            // US5 : timer dépassé → tour perdu
+<span class="nc bnc" id="L80" title="All 2 branches missed.">            if (elapsed &gt; TURN_TIMEOUT_MILLIS) {</span>
+<span class="nc" id="L81">                System.out.println(&quot;\n⏱️ Temps écoulé (&quot; + (elapsed / 1000) + &quot;s). Vous perdez votre tour.&quot;);</span>
+<span class="nc" id="L82">                return new ShotResult(</span>
+                        null,
+                        ShotOutcome.MISS,
+                        false,
+                        &quot;Temps dépassé : aucun tir effectué.&quot;
+                );
             }
 
-            // US3 : commande help
-<span class="nc bnc" id="L77" title="All 2 branches missed.">            if (input.equalsIgnoreCase(&quot;help&quot;)) {</span>
-<span class="nc" id="L78">                displayHelp();</span>
-                // on ne tire pas, on redemande une coordonnée
-<span class="nc" id="L80">                continue;</span>
-            }
-
-            // US10 : commande auto
-<span class="nc bnc" id="L84" title="All 2 branches missed.">            if (input.equalsIgnoreCase(&quot;auto&quot;)) {</span>
-<span class="nc" id="L85">                ShotResult autoResult = gameEngine.playerAutoShot();</span>
-<span class="nc" id="L86">                System.out.println(&quot;[AUTO] Tir automatique sur : &quot; + autoResult.coordinate());</span>
-<span class="nc" id="L87">                return autoResult;</span>
-            }
-
-<span class="nc bnc" id="L90" title="All 2 branches missed.">            if (!isInputValid(input)) {</span>
-<span class="nc" id="L91">                System.out.println(&quot;Entrée invalide : vous devez saisir une coordonnée.&quot;);</span>
+<span class="nc bnc" id="L90" title="All 2 branches missed.">            if (input == null) {</span>
+<span class="nc" id="L91">                System.out.println(&quot;Entrée invalide.&quot;);</span>
 <span class="nc" id="L92">                continue;</span>
             }
 
-            try {
-<span class="nc" id="L96">                return gameEngine.playerShoots(input);</span>
-<span class="nc" id="L97">            } catch (IllegalArgumentException ex) {</span>
-<span class="nc" id="L98">                System.out.println(&quot;Entrée invalide: &quot; + ex.getMessage());</span>
+<span class="nc" id="L95">            input = input.trim();</span>
+
+            // US3 : commande help
+<span class="nc bnc" id="L98" title="All 2 branches missed.">            if (input.equalsIgnoreCase(&quot;help&quot;)) {</span>
+<span class="nc" id="L99">                displayHelp();</span>
+                // on ne tire pas, on redemande une coordonnée
+<span class="nc" id="L101">                continue;</span>
             }
-<span class="nc" id="L100">        }</span>
+
+            // quit
+<span class="nc bnc" id="L105" title="All 2 branches missed.">            if (input.equalsIgnoreCase(&quot;quit&quot;)) {</span>
+<span class="nc" id="L106">                System.exit(0);</span>
+            }
+
+            // US10 : commande auto
+<span class="nc bnc" id="L110" title="All 2 branches missed.">            if (input.equalsIgnoreCase(&quot;auto&quot;)) {</span>
+<span class="nc" id="L111">                ShotResult autoResult = gameEngine.playerAutoShot();</span>
+<span class="nc" id="L112">                System.out.println(&quot;[AUTO] Tir automatique sur : &quot; + autoResult.coordinate());</span>
+<span class="nc" id="L113">                return autoResult;</span>
+            }
+
+            // US1 : entrée vide
+<span class="nc bnc" id="L117" title="All 2 branches missed.">            if (!isInputValid(input)) {</span>
+<span class="nc" id="L118">                System.out.println(&quot;Entrée invalide : vous devez saisir une coordonnée.&quot;);</span>
+<span class="nc" id="L119">                continue;</span>
+            }
+
+            try {
+<span class="nc" id="L123">                return gameEngine.playerShoots(input);</span>
+<span class="nc" id="L124">            } catch (IllegalArgumentException ex) {</span>
+<span class="nc" id="L125">                System.out.println(&quot;Entrée invalide: &quot; + ex.getMessage());</span>
+            }
+<span class="nc" id="L127">        }</span>
     }
+
 
     // US3 : affichage de l'aide
     private void displayHelp() {
-<span class="nc" id="L105">        System.out.println(&quot;\n===== Aide - Règles du jeu =====&quot;);</span>
-<span class="nc" id="L106">        System.out.println(&quot;- Objectif : couler tous les navires de l'adversaire.&quot;);</span>
-<span class="nc" id="L107">        System.out.println(&quot;- Entrez une coordonnée sous la forme lettre + chiffre (ex: A3, e5).&quot;);</span>
-<span class="nc" id="L108">        System.out.println(&quot;- Les lettres représentent les colonnes, les chiffres les lignes.&quot;);</span>
-<span class="nc" id="L109">        System.out.println(&quot;- 'quit' : quitter la partie.&quot;);</span>
-<span class="nc" id="L110">        System.out.println(&quot;- 'help' : afficher cette aide.&quot;);</span>
-<span class="nc" id="L111">        System.out.println(&quot;================================\n&quot;);</span>
-<span class="nc" id="L112">    }</span>
+<span class="nc" id="L133">        System.out.println(&quot;\n===== Aide - Règles du jeu =====&quot;);</span>
+<span class="nc" id="L134">        System.out.println(&quot;- Objectif : couler tous les navires de l'adversaire.&quot;);</span>
+<span class="nc" id="L135">        System.out.println(&quot;- Entrez une coordonnée sous la forme lettre + chiffre (ex: A3, e5).&quot;);</span>
+<span class="nc" id="L136">        System.out.println(&quot;- Les lettres représentent les colonnes, les chiffres les lignes.&quot;);</span>
+<span class="nc" id="L137">        System.out.println(&quot;- 'quit' : quitter la partie.&quot;);</span>
+<span class="nc" id="L138">        System.out.println(&quot;- 'help' : afficher cette aide.&quot;);</span>
+<span class="nc" id="L139">        System.out.println(&quot;================================\n&quot;);</span>
+<span class="nc" id="L140">    }</span>
 
     // US2 - Affichage historique joueur
     private void displayPlayerShotHistory() {
-<span class="nc" id="L116">        System.out.println(&quot;\nHistorique des derniers tirs du joueur (max 3) :&quot;);</span>
-<span class="nc bnc" id="L117" title="All 2 branches missed.">        if (gameEngine.lastPlayerShots().isEmpty()) {</span>
-<span class="nc" id="L118">            System.out.println(&quot;Aucun tir enregistré.&quot;);</span>
-<span class="nc" id="L119">            return;</span>
+<span class="nc" id="L144">        System.out.println(&quot;\nHistorique des derniers tirs du joueur (max 3) :&quot;);</span>
+<span class="nc bnc" id="L145" title="All 2 branches missed.">        if (gameEngine.lastPlayerShots().isEmpty()) {</span>
+<span class="nc" id="L146">            System.out.println(&quot;Aucun tir enregistré.&quot;);</span>
+<span class="nc" id="L147">            return;</span>
         }
-<span class="nc" id="L121">        gameEngine.lastPlayerShots().forEach(shot -&gt;</span>
-<span class="nc" id="L122">                System.out.println(&quot;- &quot; + shot.coordinate() + &quot; → &quot; + shot.outcome())</span>
+<span class="nc" id="L149">        gameEngine.lastPlayerShots().forEach(shot -&gt;</span>
+<span class="nc" id="L150">                System.out.println(&quot;- &quot; + shot.coordinate() + &quot; → &quot; + shot.outcome())</span>
         );
-<span class="nc" id="L124">        System.out.println(&quot;-----------------------------------&quot;);</span>
-<span class="nc" id="L125">    }</span>
+<span class="nc" id="L152">        System.out.println(&quot;-----------------------------------&quot;);</span>
+<span class="nc" id="L153">    }</span>
 
     // US2 - Affichage historique ordinateur
     private void displayComputerShotHistory() {
-<span class="nc" id="L129">        System.out.println(&quot;\nHistorique des derniers tirs de l'ordinateur (max 3) :&quot;);</span>
-<span class="nc bnc" id="L130" title="All 2 branches missed.">        if (gameEngine.lastComputerShots().isEmpty()) {</span>
-<span class="nc" id="L131">            System.out.println(&quot;Aucun tir enregistré.&quot;);</span>
-<span class="nc" id="L132">            return;</span>
+<span class="nc" id="L157">        System.out.println(&quot;\nHistorique des derniers tirs de l'ordinateur (max 3) :&quot;);</span>
+<span class="nc bnc" id="L158" title="All 2 branches missed.">        if (gameEngine.lastComputerShots().isEmpty()) {</span>
+<span class="nc" id="L159">            System.out.println(&quot;Aucun tir enregistré.&quot;);</span>
+<span class="nc" id="L160">            return;</span>
         }
-<span class="nc" id="L134">        gameEngine.lastComputerShots().forEach(shot -&gt;</span>
-<span class="nc" id="L135">                System.out.println(&quot;- &quot; + shot.coordinate() + &quot; → &quot; + shot.outcome())</span>
+<span class="nc" id="L162">        gameEngine.lastComputerShots().forEach(shot -&gt;</span>
+<span class="nc" id="L163">                System.out.println(&quot;- &quot; + shot.coordinate() + &quot; → &quot; + shot.outcome())</span>
         );
-<span class="nc" id="L137">        System.out.println(&quot;-----------------------------------&quot;);</span>
-<span class="nc" id="L138">    }</span>
+<span class="nc" id="L165">        System.out.println(&quot;-----------------------------------&quot;);</span>
+<span class="nc" id="L166">    }</span>
 
     private void endGameMessage() {
-<span class="nc bnc" id="L141" title="All 2 branches missed.">        if (gameEngine.isComputerFleetDestroyed()) {</span>
-<span class="nc" id="L142">            System.out.println(&quot;\nBravo, vous avez coulé tous les navires adverses!&quot;);</span>
-<span class="nc bnc" id="L143" title="All 2 branches missed.">        } else if (gameEngine.isPlayerFleetDestroyed()) {</span>
-<span class="nc" id="L144">            System.out.println(&quot;\nDommage! L'ordinateur a gagné cette fois.&quot;);</span>
+<span class="nc bnc" id="L169" title="All 2 branches missed.">        if (gameEngine.isComputerFleetDestroyed()) {</span>
+<span class="nc" id="L170">            System.out.println(&quot;\nBravo, vous avez coulé tous les navires adverses!&quot;);</span>
+<span class="nc bnc" id="L171" title="All 2 branches missed.">        } else if (gameEngine.isPlayerFleetDestroyed()) {</span>
+<span class="nc" id="L172">            System.out.println(&quot;\nDommage! L'ordinateur a gagné cette fois.&quot;);</span>
         } else {
-<span class="nc" id="L146">            System.out.println(&quot;\nPartie interrompue.&quot;);</span>
+<span class="nc" id="L174">            System.out.println(&quot;\nPartie interrompue.&quot;);</span>
         }
-<span class="nc" id="L148">    }</span>
+<span class="nc" id="L176">    }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>
