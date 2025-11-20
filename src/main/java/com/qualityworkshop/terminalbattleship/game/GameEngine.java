@@ -22,6 +22,13 @@ public class GameEngine {
     private final Deque<ShotResult> lastPlayerShots = new ArrayDeque<>();
     private final Deque<ShotResult> lastComputerShots = new ArrayDeque<>();
 
+    // US8
+    private int playerHits;
+    private int playerMisses;
+    private int computerHits;
+    private int computerMisses;
+
+
     private void recordShot(Deque<ShotResult> history, ShotResult result) {
         history.addFirst(result); // le plus récent en premier
         if (history.size() > SHOT_HISTORY_LIMIT) {
@@ -46,6 +53,13 @@ public class GameEngine {
                 !computerBoard.hasRemainingShips(),
                 messageFor("Vous", outcome));
 
+        // US8 : mise à jour du score joueur
+        if (outcome == ShotOutcome.HIT || outcome == ShotOutcome.ALL_SUNK) {
+            playerHits++;
+        } else if (outcome == ShotOutcome.MISS || outcome == ShotOutcome.INVALID) {
+            playerMisses++;
+        }
+
         recordShot(lastPlayerShots, result); // US2 : on enregistre le tir du joueur
         return result;
     }
@@ -58,6 +72,13 @@ public class GameEngine {
                 outcome,
                 !playerBoard.hasRemainingShips(),
                 messageFor("L'ordinateur", outcome));
+
+        // US8 : mise à jour du score ordi
+        if (outcome == ShotOutcome.HIT || outcome == ShotOutcome.ALL_SUNK) {
+            computerHits++;
+        } else if (outcome == ShotOutcome.MISS || outcome == ShotOutcome.INVALID) {
+            computerMisses++;
+        }
 
         recordShot(lastComputerShots, result); // US2 : on enregistre le tir de l'IA
         return result;
@@ -113,6 +134,25 @@ public class GameEngine {
     public Board computerBoard() {
         return computerBoard;
     }
+
+    // US8 : score joueur
+    public int getPlayerHits() {
+        return playerHits;
+    }
+
+    public int getPlayerMisses() {
+        return playerMisses;
+    }
+
+    // US8 : score ordinateur
+    public int getComputerHits() {
+        return computerHits;
+    }
+
+    public int getComputerMisses() {
+        return computerMisses;
+    }
+
 
     private String messageFor(String shooter, ShotOutcome outcome) {
         return switch (outcome) {

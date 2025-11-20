@@ -150,5 +150,21 @@ class GameEngineTest {
     }
 
 
+    @Test
+    void shouldTrackPlayerHitsAndMisses() {
+        Board playerBoard = Board.withShips(6, List.of(new Coordinate(0, 0)));
+        Board computerBoard = Board.withShips(6, List.of(new Coordinate(0, 1))); // navire en B1
+        GameEngine engine = new GameEngine(playerBoard, computerBoard, new NoOpComputerStrategy(new Coordinate(0, 0)));
+
+        engine.playerShoots("A1"); // MISS sur (0,0)
+        engine.playerShoots("B1"); // HIT sur (0,1)
+
+        assertThat(engine.getPlayerHits()).isEqualTo(1);
+        assertThat(engine.getPlayerMisses()).isEqualTo(1);
+    }
+
+
+
+
 }
 
