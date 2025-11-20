@@ -24,8 +24,8 @@ public class GameEngine {
 
     private void recordShot(Deque&lt;ShotResult&gt; history, ShotResult result) {
 <span class="fc" id="L26">        history.addFirst(result); // le plus récent en premier</span>
-<span class="pc bpc" id="L27" title="1 of 2 branches missed.">        if (history.size() &gt; SHOT_HISTORY_LIMIT) {</span>
-<span class="nc" id="L28">            history.removeLast(); // on garde au max 3</span>
+<span class="fc bfc" id="L27" title="All 2 branches covered.">        if (history.size() &gt; SHOT_HISTORY_LIMIT) {</span>
+<span class="fc" id="L28">            history.removeLast(); // on garde au max 3</span>
         }
 <span class="fc" id="L30">    }</span>
 
@@ -43,7 +43,7 @@ public class GameEngine {
 <span class="fc" id="L43">        ShotResult result = new ShotResult(</span>
                 coordinate,
                 outcome,
-<span class="pc bpc" id="L46" title="1 of 2 branches missed.">                !computerBoard.hasRemainingShips(),</span>
+<span class="fc bfc" id="L46" title="All 2 branches covered.">                !computerBoard.hasRemainingShips(),</span>
 <span class="fc" id="L47">                messageFor(&quot;Vous&quot;, outcome));</span>
 
 <span class="fc" id="L49">        recordShot(lastPlayerShots, result); // US2 : on enregistre le tir du joueur</span>
@@ -56,7 +56,7 @@ public class GameEngine {
 <span class="fc" id="L56">        ShotResult result = new ShotResult(</span>
                 target,
                 outcome,
-<span class="pc bpc" id="L59" title="1 of 2 branches missed.">                !playerBoard.hasRemainingShips(),</span>
+<span class="fc bfc" id="L59" title="All 2 branches covered.">                !playerBoard.hasRemainingShips(),</span>
 <span class="fc" id="L60">                messageFor(&quot;L'ordinateur&quot;, outcome));</span>
 
 <span class="fc" id="L62">        recordShot(lastComputerShots, result); // US2 : on enregistre le tir de l'IA</span>
@@ -65,12 +65,12 @@ public class GameEngine {
 
     // US2 : derniers tirs du joueur (le plus récent en premier)
     public List&lt;ShotResult&gt; lastPlayerShots() {
-<span class="nc" id="L68">        return List.copyOf(lastPlayerShots);</span>
+<span class="fc" id="L68">        return List.copyOf(lastPlayerShots);</span>
     }
 
     // US2 : derniers tirs de l'ordinateur (le plus récent en premier)
     public List&lt;ShotResult&gt; lastComputerShots() {
-<span class="nc" id="L73">        return List.copyOf(lastComputerShots);</span>
+<span class="fc" id="L73">        return List.copyOf(lastComputerShots);</span>
     }
 
 
@@ -91,9 +91,9 @@ public class GameEngine {
     }
 
     private String messageFor(String shooter, ShotOutcome outcome) {
-<span class="pc bpc" id="L94" title="3 of 5 branches missed.">        return switch (outcome) {</span>
-<span class="nc" id="L95">            case HIT -&gt; shooter + &quot; a touché un navire !&quot;;</span>
-<span class="nc" id="L96">            case MISS -&gt; shooter + &quot; a tiré dans l'eau.&quot;;</span>
+<span class="pc bpc" id="L94" title="1 of 5 branches missed.">        return switch (outcome) {</span>
+<span class="fc" id="L95">            case HIT -&gt; shooter + &quot; a touché un navire !&quot;;</span>
+<span class="fc" id="L96">            case MISS -&gt; shooter + &quot; a tiré dans l'eau.&quot;;</span>
 <span class="fc" id="L97">            case ALREADY_TARGETED -&gt; shooter + &quot; avait déjà visé cette case.&quot;;</span>
 <span class="nc" id="L98">            case INVALID -&gt; shooter + &quot; a visé hors de la grille !&quot;;</span>
 <span class="fc" id="L99">            case ALL_SUNK -&gt; shooter + &quot; vient de couler la dernière cible !&quot;;</span>

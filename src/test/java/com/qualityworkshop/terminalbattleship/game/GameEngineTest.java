@@ -81,4 +81,61 @@ class GameEngineTest {
         assertThat(playerBoard.cellAt(new Coordinate(0, 0))).isEqualTo(CellState.HIT);
         assertThat(engine.isPlayerFleetDestroyed()).isTrue();
     }
+
+    @Test
+    void shouldHaveEmptyHistoryAtStart() {
+        Board playerBoard = Board.withShips(6, List.of(new Coordinate(0, 0)));
+        Board computerBoard = Board.withShips(6, List.of(new Coordinate(0, 1)));
+        GameEngine engine = new GameEngine(playerBoard, computerBoard, new NoOpComputerStrategy(new Coordinate(0, 0)));
+
+        assertThat(engine.lastPlayerShots()).isEmpty();
+        assertThat(engine.lastComputerShots()).isEmpty();
+    }
+
+    @Test
+    void shouldKeepOnlyLastThreePlayerShotsInReverseOrder() {
+        Board playerBoard = Board.withShips(6, List.of(new Coordinate(0, 0)));
+        Board computerBoard = Board.withShips(6, List.of(
+                new Coordinate(0, 1),
+                new Coordinate(1, 1),
+                new Coordinate(2, 1),
+                new Coordinate(3, 1),
+                new Coordinate(4, 1)
+        ));
+        GameEngine engine = new GameEngine(playerBoard, computerBoard, new NoOpComputerStrategy(new Coordinate(5, 5)));
+
+        engine.playerShoots("A1");
+        engine.playerShoots("B2");
+        engine.playerShoots("C3");
+        engine.playerShoots("D4");
+        engine.playerShoots("E5");
+
+        var history = engine.lastPlayerShots();
+
+        assertThat(history).hasSize(3);
+        assertThat(history.get(0).coordinate()).isEqualTo(Coordinate.fromInput("E5"));
+        assertThat(history.get(1).coordinate()).isEqualTo(Coordinate.fromInput("D4"));
+        assertThat(history.get(2).coordinate()).isEqualTo(Coordinate.fromInput("C3"));
+    }
+
+    @Test
+    void shouldRecordComputerShotsInHistory() {
+        Board playerBoard = Board.withShips(6, List.of(
+                new Coordinate(0, 0),
+                new Coordinate(1, 0),
+                new Coordinate(2, 0)
+        ));
+        Board computerBoard = Board.withShips(6, List.of(new Coordinate(0, 1)));
+        GameEngine engine = new GameEngine(playerBoard, computerBoard, new NoOpComputerStrategy(new Coordinate(0, 0)));
+
+        engine.computerShoots();
+        engine.computerShoots();
+        engine.computerShoots();
+
+        var history = engine.lastComputerShots();
+
+        assertThat(history).hasSize(3);
+    }
+
 }
+
