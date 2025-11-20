@@ -68,4 +68,16 @@ public class GameRunner {
             System.out.println("\nPartie interrompue.");
         }
     }
+
+    private void afficherRegles() {
+        String regles = """
+        Règles du jeu :
+        - Chaque joueur tire à tour de rôle.
+        - Tapez une coordonnée (ex: e5) pour tirer.
+        - Tapez 'help' pour voir ces règles à tout moment.
+        - Tapez 'quit' pour quitter la partie.
+        """;
+        System.out.println(regles);
+    }
+
 }
