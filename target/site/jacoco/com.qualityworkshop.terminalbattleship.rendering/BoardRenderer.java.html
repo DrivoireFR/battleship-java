@@ -2,27 +2,42 @@
 
 import com.qualityworkshop.terminalbattleship.board.Board;
 import com.qualityworkshop.terminalbattleship.board.CellState;
+import com.qualityworkshop.terminalbattleship.board.Coordinate;
 
 public final class BoardRenderer {
+
+    private static final String COLUMNS = &quot;ABCDEF&quot;;
 
     private BoardRenderer() {
     }
 
     public static String render(Board board, boolean revealShips) {
-<span class="fc" id="L12">        StringBuilder builder = new StringBuilder();</span>
-<span class="fc" id="L13">        builder.append(&quot;  A B C D E F\n&quot;);</span>
-<span class="fc bfc" id="L14" title="All 2 branches covered.">        for (int row = 0; row &lt; board.size(); row++) {</span>
-<span class="fc" id="L15">            builder.append(row + 1).append(' ');</span>
-<span class="fc bfc" id="L16" title="All 2 branches covered.">            for (int col = 0; col &lt; board.size(); col++) {</span>
-<span class="fc" id="L17">                CellState state = board.cellAt(new com.qualityworkshop.terminalbattleship.board.Coordinate(row, col));</span>
-<span class="fc" id="L18">                builder.append(state.glyph(revealShips));</span>
-<span class="fc bfc" id="L19" title="All 2 branches covered.">                if (col &lt; board.size() - 1) {</span>
-<span class="fc" id="L20">                    builder.append(' ');</span>
+<span class="fc" id="L15">        StringBuilder builder = new StringBuilder();</span>
+
+        // ===== US4: Header dynamique selon taille du board =====
+<span class="fc" id="L18">        builder.append(&quot;  &quot;);</span>
+<span class="fc bfc" id="L19" title="All 2 branches covered.">        for (int col = 0; col &lt; board.size(); col++) {</span>
+<span class="fc" id="L20">            builder.append(COLUMNS.charAt(col));</span>
+<span class="fc bfc" id="L21" title="All 2 branches covered.">            if (col &lt; board.size() - 1) {</span>
+<span class="fc" id="L22">                builder.append(' ');</span>
+            }
+        }
+<span class="fc" id="L25">        builder.append('\n');</span>
+
+        // ===== Lignes dynamiques =====
+<span class="fc bfc" id="L28" title="All 2 branches covered.">        for (int row = 0; row &lt; board.size(); row++) {</span>
+<span class="fc" id="L29">            builder.append(row + 1).append(' ');</span>
+<span class="fc bfc" id="L30" title="All 2 branches covered.">            for (int col = 0; col &lt; board.size(); col++) {</span>
+<span class="fc" id="L31">                CellState state = board.cellAt(new Coordinate(row, col));</span>
+<span class="fc" id="L32">                builder.append(state.glyph(revealShips));</span>
+<span class="fc bfc" id="L33" title="All 2 branches covered.">                if (col &lt; board.size() - 1) {</span>
+<span class="fc" id="L34">                    builder.append(' ');</span>
                 }
             }
-<span class="fc" id="L23">            builder.append('\n');</span>
+<span class="fc" id="L37">            builder.append('\n');</span>
         }
-<span class="fc" id="L25">        return builder.toString();</span>
+
+<span class="fc" id="L40">        return builder.toString();</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

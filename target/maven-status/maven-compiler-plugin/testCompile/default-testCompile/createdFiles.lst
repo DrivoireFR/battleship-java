@@ -1,4 +1,7 @@
+com\qualityworkshop\terminalbattleship\board\BoardSizeTest.class
 com\qualityworkshop\terminalbattleship\rendering\BoardRendererTest.class
+com\qualityworkshop\terminalbattleship\rendering\BoardRendererSizeTest.class
 com\qualityworkshop\terminalbattleship\strategy\RandomShotStrategyTest.class
 com\qualityworkshop\terminalbattleship\game\GameEngineTest.class
 com\qualityworkshop\terminalbattleship\score\ScoreServiceTest.class
+com\qualityworkshop\terminalbattleship\board\CoordinateTest.class

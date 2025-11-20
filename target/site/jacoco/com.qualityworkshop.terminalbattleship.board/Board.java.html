@@ -34,20 +34,20 @@ public class Board {
     }
 
     public static Board randomFleet(int size, int shipCount) {
-<span class="nc" id="L37">        return randomFleet(size, shipCount, new SecureRandom());</span>
+<span class="fc" id="L37">        return randomFleet(size, shipCount, new SecureRandom());</span>
     }
 
     public static Board randomFleet(int size, int shipCount, Random random) {
-<span class="nc" id="L41">        Board board = new Board(size);</span>
-<span class="nc" id="L42">        List&lt;Coordinate&gt; pool = new ArrayList&lt;&gt;();</span>
-<span class="nc bnc" id="L43" title="All 2 branches missed.">        for (int row = 0; row &lt; size; row++) {</span>
-<span class="nc bnc" id="L44" title="All 2 branches missed.">            for (int col = 0; col &lt; size; col++) {</span>
-<span class="nc" id="L45">                pool.add(new Coordinate(row, col));</span>
+<span class="fc" id="L41">        Board board = new Board(size);</span>
+<span class="fc" id="L42">        List&lt;Coordinate&gt; pool = new ArrayList&lt;&gt;();</span>
+<span class="fc bfc" id="L43" title="All 2 branches covered.">        for (int row = 0; row &lt; size; row++) {</span>
+<span class="fc bfc" id="L44" title="All 2 branches covered.">            for (int col = 0; col &lt; size; col++) {</span>
+<span class="fc" id="L45">                pool.add(new Coordinate(row, col));</span>
             }
         }
-<span class="nc" id="L48">        Collections.shuffle(pool, random);</span>
-<span class="nc" id="L49">        pool.stream().limit(shipCount).forEach(board::placeShip);</span>
-<span class="nc" id="L50">        return board;</span>
+<span class="fc" id="L48">        Collections.shuffle(pool, random);</span>
+<span class="fc" id="L49">        pool.stream().limit(shipCount).forEach(board::placeShip);</span>
+<span class="fc" id="L50">        return board;</span>
     }
 
     public ShotOutcome shoot(Coordinate coordinate) {
@@ -75,7 +75,7 @@ public class Board {
     }
 
     public boolean hasRemainingShips() {
-<span class="pc bpc" id="L78" title="1 of 2 branches missed.">        return !shipCells.isEmpty();</span>
+<span class="fc bfc" id="L78" title="All 2 branches covered.">        return !shipCells.isEmpty();</span>
     }
 
     public List&lt;Coordinate&gt; untargetedCells() {

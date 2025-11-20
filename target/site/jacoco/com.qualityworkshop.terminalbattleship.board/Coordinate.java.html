@@ -6,40 +6,63 @@ import java.util.Objects;
 public record Coordinate(int row, int column) {
 
     private static final String COLUMNS = &quot;ABCDEF&quot;;
+    private static final int DEFAULT_BOARD_SIZE = 6;
 
-<span class="fc" id="L10">    public Coordinate {</span>
-<span class="pc bpc" id="L11" title="2 of 4 branches missed.">        if (row &lt; 0 || column &lt; 0) {</span>
-<span class="nc" id="L12">            throw new IllegalArgumentException(&quot;Row and column must be positive&quot;);</span>
+<span class="fc" id="L11">    public Coordinate {</span>
+<span class="pc bpc" id="L12" title="2 of 4 branches missed.">        if (row &lt; 0 || column &lt; 0) {</span>
+<span class="nc" id="L13">            throw new IllegalArgumentException(&quot;Row and column must be positive&quot;);</span>
         }
-<span class="fc" id="L14">    }</span>
+<span class="fc" id="L15">    }</span>
 
+    // ===== Méthode par défaut (6x6) - Appelle la version dynamique =====
     public static Coordinate fromInput(String input) {
-<span class="fc" id="L17">        Objects.requireNonNull(input, &quot;input&quot;);</span>
-<span class="fc" id="L18">        String trimmed = input.trim().toUpperCase(Locale.ROOT);</span>
-<span class="pc bpc" id="L19" title="2 of 4 branches missed.">        if (trimmed.length() &lt; 2 || trimmed.length() &gt; 3) {</span>
-<span class="nc" id="L20">            throw new IllegalArgumentException(&quot;Format attendu: lettre + nombre (ex: B3)&quot;);</span>
+<span class="fc" id="L19">        return fromInput(input, DEFAULT_BOARD_SIZE);</span>
+    }
+
+    // ===== US4: Méthode avec taille paramétrable =====
+    public static Coordinate fromInput(String input, int boardSize) {
+<span class="fc" id="L24">        Objects.requireNonNull(input, &quot;input&quot;);</span>
+
+        // ===== US1: Validation input vide =====
+<span class="fc" id="L27">        String trimmed = input.trim();</span>
+<span class="fc bfc" id="L28" title="All 2 branches covered.">        if (trimmed.isEmpty()) {</span>
+<span class="fc" id="L29">            throw new IllegalArgumentException(&quot;L'entrée ne peut pas être vide&quot;);</span>
         }
-<span class="fc" id="L22">        char columnLetter = trimmed.charAt(0);</span>
-<span class="fc" id="L23">        int columnIndex = COLUMNS.indexOf(columnLetter);</span>
-<span class="fc bfc" id="L24" title="All 2 branches covered.">        if (columnIndex &lt; 0) {</span>
-<span class="fc" id="L25">            throw new IllegalArgumentException(&quot;Lettre hors grille: &quot; + columnLetter);</span>
+
+<span class="fc" id="L32">        String upperInput = trimmed.toUpperCase(Locale.ROOT);</span>
+<span class="pc bpc" id="L33" title="2 of 4 branches missed.">        if (upperInput.length() &lt; 2 || upperInput.length() &gt; 3) {</span>
+<span class="nc" id="L34">            throw new IllegalArgumentException(&quot;Format attendu: lettre + nombre (ex: B3)&quot;);</span>
         }
+
+<span class="fc" id="L37">        char columnLetter = upperInput.charAt(0);</span>
+<span class="fc" id="L38">        int columnIndex = COLUMNS.indexOf(columnLetter);</span>
+
+        // ===== US4: Validation basée sur boardSize =====
+<span class="fc bfc" id="L41" title="All 4 branches covered.">        if (columnIndex &lt; 0 || columnIndex &gt;= boardSize) {</span>
+<span class="fc" id="L42">            throw new IllegalArgumentException(&quot;Lettre hors grille: &quot; + columnLetter);</span>
+        }
+
         int rowValue;
         try {
-<span class="fc" id="L29">            rowValue = Integer.parseInt(trimmed.substring(1));</span>
-<span class="nc" id="L30">        } catch (NumberFormatException e) {</span>
-<span class="nc" id="L31">            throw new IllegalArgumentException(&quot;Index de ligne invalide&quot;);</span>
-<span class="fc" id="L32">        }</span>
-<span class="pc bpc" id="L33" title="2 of 4 branches missed.">        if (rowValue &lt; 1 || rowValue &gt; 6) {</span>
-<span class="nc" id="L34">            throw new IllegalArgumentException(&quot;La ligne doit être comprise entre 1 et 6&quot;);</span>
+<span class="fc" id="L47">            rowValue = Integer.parseInt(upperInput.substring(1));</span>
+<span class="nc" id="L48">        } catch (NumberFormatException e) {</span>
+<span class="nc" id="L49">            throw new IllegalArgumentException(&quot;Index de ligne invalide&quot;);</span>
+<span class="fc" id="L50">        }</span>
+
+        // ===== US4: Validation basée sur boardSize =====
+<span class="pc bpc" id="L53" title="1 of 4 branches missed.">        if (rowValue &lt; 1 || rowValue &gt; boardSize) {</span>
+<span class="fc" id="L54">            throw new IllegalArgumentException(</span>
+                    &quot;La ligne doit être comprise entre 1 et &quot; + boardSize
+            );
         }
-<span class="fc" id="L36">        return new Coordinate(rowValue - 1, columnIndex);</span>
+
+<span class="fc" id="L59">        return new Coordinate(rowValue - 1, columnIndex);</span>
     }
 
     @Override
     public String toString() {
-<span class="nc" id="L41">        char columnLetter = COLUMNS.charAt(column);</span>
-<span class="nc" id="L42">        return String.format(&quot;%c%d&quot;, columnLetter, row + 1);</span>
+<span class="nc" id="L64">        char columnLetter = COLUMNS.charAt(column);</span>
+<span class="nc" id="L65">        return String.format(&quot;%c%d&quot;, columnLetter, row + 1);</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

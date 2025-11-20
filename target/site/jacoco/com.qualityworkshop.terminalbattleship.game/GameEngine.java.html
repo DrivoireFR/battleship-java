@@ -12,58 +12,61 @@ public class GameEngine {
     private final Board playerBoard;
     private final Board computerBoard;
     private final ShotStrategy computerStrategy;
+    private final int boardSize;  // ⚠️ AJOUTEZ CETTE LIGNE
 
     public GameEngine(@Qualifier(&quot;playerBoard&quot;) Board playerBoard,
                       @Qualifier(&quot;computerBoard&quot;) Board computerBoard,
-<span class="fc" id="L18">                      ShotStrategy computerStrategy) {</span>
-<span class="fc" id="L19">        this.playerBoard = playerBoard;</span>
-<span class="fc" id="L20">        this.computerBoard = computerBoard;</span>
-<span class="fc" id="L21">        this.computerStrategy = computerStrategy;</span>
-<span class="fc" id="L22">    }</span>
+                      ShotStrategy computerStrategy,
+<span class="fc" id="L20">                      @Qualifier(&quot;boardSize&quot;) int boardSize) {  // ⚠️ AJOUTEZ CE PARAMÈTRE</span>
+<span class="fc" id="L21">        this.playerBoard = playerBoard;</span>
+<span class="fc" id="L22">        this.computerBoard = computerBoard;</span>
+<span class="fc" id="L23">        this.computerStrategy = computerStrategy;</span>
+<span class="fc" id="L24">        this.boardSize = boardSize;  // ⚠️ AJOUTEZ CETTE LIGNE</span>
+<span class="fc" id="L25">    }</span>
 
     public ShotResult playerShoots(String coordinateInput) {
-<span class="fc" id="L25">        Coordinate coordinate = Coordinate.fromInput(coordinateInput);</span>
-<span class="fc" id="L26">        ShotOutcome outcome = computerBoard.shoot(coordinate);</span>
-<span class="fc" id="L27">        return new ShotResult(</span>
+<span class="fc" id="L28">        Coordinate coordinate = Coordinate.fromInput(coordinateInput, boardSize);  // ⚠️ MODIFIEZ ICI</span>
+<span class="fc" id="L29">        ShotOutcome outcome = computerBoard.shoot(coordinate);</span>
+<span class="fc" id="L30">        return new ShotResult(</span>
                 coordinate,
                 outcome,
-<span class="pc bpc" id="L30" title="1 of 2 branches missed.">                !computerBoard.hasRemainingShips(),</span>
-<span class="fc" id="L31">                messageFor(&quot;Vous&quot;, outcome));</span>
+<span class="pc bpc" id="L33" title="1 of 2 branches missed.">                !computerBoard.hasRemainingShips(),</span>
+<span class="fc" id="L34">                messageFor(&quot;Vous&quot;, outcome));</span>
     }
 
     public ShotResult computerShoots() {
-<span class="fc" id="L35">        Coordinate target = computerStrategy.pickTarget(playerBoard);</span>
-<span class="fc" id="L36">        ShotOutcome outcome = playerBoard.shoot(target);</span>
-<span class="fc" id="L37">        return new ShotResult(</span>
+<span class="fc" id="L38">        Coordinate target = computerStrategy.pickTarget(playerBoard);</span>
+<span class="fc" id="L39">        ShotOutcome outcome = playerBoard.shoot(target);</span>
+<span class="fc" id="L40">        return new ShotResult(</span>
                 target,
                 outcome,
-<span class="pc bpc" id="L40" title="1 of 2 branches missed.">                !playerBoard.hasRemainingShips(),</span>
-<span class="fc" id="L41">                messageFor(&quot;L'ordinateur&quot;, outcome));</span>
+<span class="pc bpc" id="L43" title="1 of 2 branches missed.">                !playerBoard.hasRemainingShips(),</span>
+<span class="fc" id="L44">                messageFor(&quot;L'ordinateur&quot;, outcome));</span>
     }
 
     public boolean isComputerFleetDestroyed() {
-<span class="pc bpc" id="L45" title="1 of 2 branches missed.">        return !computerBoard.hasRemainingShips();</span>
+<span class="pc bpc" id="L48" title="1 of 2 branches missed.">        return !computerBoard.hasRemainingShips();</span>
     }
 
     public boolean isPlayerFleetDestroyed() {
-<span class="pc bpc" id="L49" title="1 of 2 branches missed.">        return !playerBoard.hasRemainingShips();</span>
+<span class="pc bpc" id="L52" title="1 of 2 branches missed.">        return !playerBoard.hasRemainingShips();</span>
     }
 
     public Board playerBoard() {
-<span class="nc" id="L53">        return playerBoard;</span>
+<span class="nc" id="L56">        return playerBoard;</span>
     }
 
     public Board computerBoard() {
-<span class="nc" id="L57">        return computerBoard;</span>
+<span class="nc" id="L60">        return computerBoard;</span>
     }
 
     private String messageFor(String shooter, ShotOutcome outcome) {
-<span class="pc bpc" id="L61" title="3 of 5 branches missed.">        return switch (outcome) {</span>
-<span class="nc" id="L62">            case HIT -&gt; shooter + &quot; a touché un navire !&quot;;</span>
-<span class="nc" id="L63">            case MISS -&gt; shooter + &quot; a tiré dans l'eau.&quot;;</span>
-<span class="fc" id="L64">            case ALREADY_TARGETED -&gt; shooter + &quot; avait déjà visé cette case.&quot;;</span>
-<span class="nc" id="L65">            case INVALID -&gt; shooter + &quot; a visé hors de la grille !&quot;;</span>
-<span class="fc" id="L66">            case ALL_SUNK -&gt; shooter + &quot; vient de couler la dernière cible !&quot;;</span>
+<span class="pc bpc" id="L64" title="3 of 5 branches missed.">        return switch (outcome) {</span>
+<span class="nc" id="L65">            case HIT -&gt; shooter + &quot; a touché un navire !&quot;;</span>
+<span class="nc" id="L66">            case MISS -&gt; shooter + &quot; a tiré dans l'eau.&quot;;</span>
+<span class="fc" id="L67">            case ALREADY_TARGETED -&gt; shooter + &quot; avait déjà visé cette case.&quot;;</span>
+<span class="nc" id="L68">            case INVALID -&gt; shooter + &quot; a visé hors de la grille !&quot;;</span>
+<span class="fc" id="L69">            case ALL_SUNK -&gt; shooter + &quot; vient de couler la dernière cible !&quot;;</span>
         };
     }
 }
