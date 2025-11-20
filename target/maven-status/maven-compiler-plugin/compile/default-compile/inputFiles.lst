@@ -9,5 +9,6 @@ C:\Users\HP\IdeaProjects\battleship-java\src\main\java\com\qualityworkshop\termi
 C:\Users\HP\IdeaProjects\battleship-java\src\main\java\com\qualityworkshop\terminalbattleship\game\GameConfiguration.java
 C:\Users\HP\IdeaProjects\battleship-java\src\main\java\com\qualityworkshop\terminalbattleship\TerminalBattleshipApplication.java
 C:\Users\HP\IdeaProjects\battleship-java\src\main\java\com\qualityworkshop\terminalbattleship\board\CellState.java
+C:\Users\HP\IdeaProjects\battleship-java\src\main\java\com\qualityworkshop\terminalbattleship\score\ScoreService.java
 C:\Users\HP\IdeaProjects\battleship-java\src\main\java\com\qualityworkshop\terminalbattleship\strategy\RandomShotStrategy.java
 C:\Users\HP\IdeaProjects\battleship-java\src\main\java\com\qualityworkshop\terminalbattleship\game\ShotOutcome.java
