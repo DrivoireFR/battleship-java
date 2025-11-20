@@ -44,29 +44,38 @@ public class GameRunner {
 <span class="nc" id="L44">        System.out.println(BoardRenderer.render(gameEngine.computerBoard(), false));</span>
 <span class="nc" id="L45">    }</span>
 
+    private boolean isInputValid(String input) {
+<span class="nc bnc" id="L48" title="All 4 branches missed.">        return input != null &amp;&amp; !input.trim().isEmpty();</span>
+    }
+
+
     private ShotResult askForPlayerShot() {
         while (true) {
-<span class="nc" id="L49">            System.out.print(&quot;Entrez une coordonnée (ex: e5): &quot;);</span>
-<span class="nc" id="L50">            String input = scanner.nextLine().trim();</span>
-<span class="nc bnc" id="L51" title="All 2 branches missed.">            if (input.equalsIgnoreCase(&quot;quit&quot;)) {</span>
-<span class="nc" id="L52">                System.exit(0);</span>
+<span class="nc" id="L54">            System.out.print(&quot;Entrez une coordonnée (ex: e5): &quot;);</span>
+<span class="nc" id="L55">            String input = scanner.nextLine().trim();</span>
+<span class="nc bnc" id="L56" title="All 2 branches missed.">            if (input.equalsIgnoreCase(&quot;quit&quot;)) {</span>
+<span class="nc" id="L57">                System.exit(0);</span>
+            }
+<span class="nc bnc" id="L59" title="All 2 branches missed.">            if (!isInputValid(input)) {</span>
+<span class="nc" id="L60">                System.out.println(&quot;Entrée invalide : vous devez saisir une coordonnée.&quot;);</span>
+<span class="nc" id="L61">                continue; // revient au début de la boucle</span>
             }
             try {
-<span class="nc" id="L55">                return gameEngine.playerShoots(input);</span>
-<span class="nc" id="L56">            } catch (IllegalArgumentException ex) {</span>
-<span class="nc" id="L57">                System.out.println(&quot;Entrée invalide: &quot; + ex.getMessage());</span>
+<span class="nc" id="L64">                return gameEngine.playerShoots(input);</span>
+<span class="nc" id="L65">            } catch (IllegalArgumentException ex) {</span>
+<span class="nc" id="L66">                System.out.println(&quot;Entrée invalide: &quot; + ex.getMessage());</span>
             }
-<span class="nc" id="L59">        }</span>
+<span class="nc" id="L68">        }</span>
     }
 
     private void endGameMessage() {
-<span class="nc bnc" id="L63" title="All 2 branches missed.">        if (gameEngine.isComputerFleetDestroyed()) {</span>
-<span class="nc" id="L64">            System.out.println(&quot;\nBravo, vous avez coulé tous les navires adverses!&quot;);</span>
-<span class="nc bnc" id="L65" title="All 2 branches missed.">        } else if (gameEngine.isPlayerFleetDestroyed()) {</span>
-<span class="nc" id="L66">            System.out.println(&quot;\nDommage! L'ordinateur a gagné cette fois.&quot;);</span>
+<span class="nc bnc" id="L72" title="All 2 branches missed.">        if (gameEngine.isComputerFleetDestroyed()) {</span>
+<span class="nc" id="L73">            System.out.println(&quot;\nBravo, vous avez coulé tous les navires adverses!&quot;);</span>
+<span class="nc bnc" id="L74" title="All 2 branches missed.">        } else if (gameEngine.isPlayerFleetDestroyed()) {</span>
+<span class="nc" id="L75">            System.out.println(&quot;\nDommage! L'ordinateur a gagné cette fois.&quot;);</span>
         } else {
-<span class="nc" id="L68">            System.out.println(&quot;\nPartie interrompue.&quot;);</span>
+<span class="nc" id="L77">            System.out.println(&quot;\nPartie interrompue.&quot;);</span>
         }
-<span class="nc" id="L70">    }</span>
+<span class="nc" id="L79">    }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

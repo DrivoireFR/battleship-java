@@ -44,12 +44,21 @@ public class GameRunner {
         System.out.println(BoardRenderer.render(gameEngine.computerBoard(), false));
     }
 
+    private boolean isInputValid(String input) {
+        return input != null && !input.trim().isEmpty();
+    }
+
+
     private ShotResult askForPlayerShot() {
         while (true) {
             System.out.print("Entrez une coordonnée (ex: e5): ");
             String input = scanner.nextLine().trim();
             if (input.equalsIgnoreCase("quit")) {
                 System.exit(0);
+            }
+            if (!isInputValid(input)) {
+                System.out.println("Entrée invalide : vous devez saisir une coordonnée.");
+                continue; // revient au début de la boucle
             }
             try {
                 return gameEngine.playerShoots(input);
