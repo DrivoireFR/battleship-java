@@ -22,105 +22,145 @@ public class GameEngine {
 <span class="fc" id="L22">    private final Deque&lt;ShotResult&gt; lastPlayerShots = new ArrayDeque&lt;&gt;();</span>
 <span class="fc" id="L23">    private final Deque&lt;ShotResult&gt; lastComputerShots = new ArrayDeque&lt;&gt;();</span>
 
+    // US8
+    private int playerHits;
+    private int playerMisses;
+    private int computerHits;
+    private int computerMisses;
+
+
     private void recordShot(Deque&lt;ShotResult&gt; history, ShotResult result) {
-<span class="fc" id="L26">        history.addFirst(result); // le plus récent en premier</span>
-<span class="fc bfc" id="L27" title="All 2 branches covered.">        if (history.size() &gt; SHOT_HISTORY_LIMIT) {</span>
-<span class="fc" id="L28">            history.removeLast(); // on garde au max 3</span>
+<span class="fc" id="L33">        history.addFirst(result); // le plus récent en premier</span>
+<span class="fc bfc" id="L34" title="All 2 branches covered.">        if (history.size() &gt; SHOT_HISTORY_LIMIT) {</span>
+<span class="fc" id="L35">            history.removeLast(); // on garde au max 3</span>
         }
-<span class="fc" id="L30">    }</span>
+<span class="fc" id="L37">    }</span>
 
     public GameEngine(@Qualifier(&quot;playerBoard&quot;) Board playerBoard,
                       @Qualifier(&quot;computerBoard&quot;) Board computerBoard,
-<span class="fc" id="L34">                      ShotStrategy computerStrategy) {</span>
-<span class="fc" id="L35">        this.playerBoard = playerBoard;</span>
-<span class="fc" id="L36">        this.computerBoard = computerBoard;</span>
-<span class="fc" id="L37">        this.computerStrategy = computerStrategy;</span>
-<span class="fc" id="L38">    }</span>
+<span class="fc" id="L41">                      ShotStrategy computerStrategy) {</span>
+<span class="fc" id="L42">        this.playerBoard = playerBoard;</span>
+<span class="fc" id="L43">        this.computerBoard = computerBoard;</span>
+<span class="fc" id="L44">        this.computerStrategy = computerStrategy;</span>
+<span class="fc" id="L45">    }</span>
 
     public ShotResult playerShoots(String coordinateInput) {
-<span class="fc" id="L41">        Coordinate coordinate = Coordinate.fromInput(coordinateInput);</span>
-<span class="fc" id="L42">        ShotOutcome outcome = computerBoard.shoot(coordinate);</span>
-<span class="fc" id="L43">        ShotResult result = new ShotResult(</span>
+<span class="fc" id="L48">        Coordinate coordinate = Coordinate.fromInput(coordinateInput);</span>
+<span class="fc" id="L49">        ShotOutcome outcome = computerBoard.shoot(coordinate);</span>
+<span class="fc" id="L50">        ShotResult result = new ShotResult(</span>
                 coordinate,
                 outcome,
-<span class="fc bfc" id="L46" title="All 2 branches covered.">                !computerBoard.hasRemainingShips(),</span>
-<span class="fc" id="L47">                messageFor(&quot;Vous&quot;, outcome));</span>
+<span class="fc bfc" id="L53" title="All 2 branches covered.">                !computerBoard.hasRemainingShips(),</span>
+<span class="fc" id="L54">                messageFor(&quot;Vous&quot;, outcome));</span>
 
-<span class="fc" id="L49">        recordShot(lastPlayerShots, result); // US2 : on enregistre le tir du joueur</span>
-<span class="fc" id="L50">        return result;</span>
+        // US8 : mise à jour du score joueur
+<span class="fc bfc" id="L57" title="All 4 branches covered.">        if (outcome == ShotOutcome.HIT || outcome == ShotOutcome.ALL_SUNK) {</span>
+<span class="fc" id="L58">            playerHits++;</span>
+<span class="pc bpc" id="L59" title="1 of 4 branches missed.">        } else if (outcome == ShotOutcome.MISS || outcome == ShotOutcome.INVALID) {</span>
+<span class="fc" id="L60">            playerMisses++;</span>
+        }
+
+<span class="fc" id="L63">        recordShot(lastPlayerShots, result); // US2 : on enregistre le tir du joueur</span>
+<span class="fc" id="L64">        return result;</span>
     }
 
     public ShotResult computerShoots() {
-<span class="fc" id="L54">        Coordinate target = computerStrategy.pickTarget(playerBoard);</span>
-<span class="fc" id="L55">        ShotOutcome outcome = playerBoard.shoot(target);</span>
-<span class="fc" id="L56">        ShotResult result = new ShotResult(</span>
+<span class="fc" id="L68">        Coordinate target = computerStrategy.pickTarget(playerBoard);</span>
+<span class="fc" id="L69">        ShotOutcome outcome = playerBoard.shoot(target);</span>
+<span class="fc" id="L70">        ShotResult result = new ShotResult(</span>
                 target,
                 outcome,
-<span class="fc bfc" id="L59" title="All 2 branches covered.">                !playerBoard.hasRemainingShips(),</span>
-<span class="fc" id="L60">                messageFor(&quot;L'ordinateur&quot;, outcome));</span>
+<span class="fc bfc" id="L73" title="All 2 branches covered.">                !playerBoard.hasRemainingShips(),</span>
+<span class="fc" id="L74">                messageFor(&quot;L'ordinateur&quot;, outcome));</span>
 
-<span class="fc" id="L62">        recordShot(lastComputerShots, result); // US2 : on enregistre le tir de l'IA</span>
-<span class="fc" id="L63">        return result;</span>
+        // US8 : mise à jour du score ordi
+<span class="fc bfc" id="L77" title="All 4 branches covered.">        if (outcome == ShotOutcome.HIT || outcome == ShotOutcome.ALL_SUNK) {</span>
+<span class="fc" id="L78">            computerHits++;</span>
+<span class="pc bpc" id="L79" title="2 of 4 branches missed.">        } else if (outcome == ShotOutcome.MISS || outcome == ShotOutcome.INVALID) {</span>
+<span class="nc" id="L80">            computerMisses++;</span>
+        }
+
+<span class="fc" id="L83">        recordShot(lastComputerShots, result); // US2 : on enregistre le tir de l'IA</span>
+<span class="fc" id="L84">        return result;</span>
     }
 
     // US2 : derniers tirs du joueur (le plus récent en premier)
     public List&lt;ShotResult&gt; lastPlayerShots() {
-<span class="fc" id="L68">        return List.copyOf(lastPlayerShots);</span>
+<span class="fc" id="L89">        return List.copyOf(lastPlayerShots);</span>
     }
 
     // US2 : derniers tirs de l'ordinateur (le plus récent en premier)
     public List&lt;ShotResult&gt; lastComputerShots() {
-<span class="fc" id="L73">        return List.copyOf(lastComputerShots);</span>
+<span class="fc" id="L94">        return List.copyOf(lastComputerShots);</span>
     }
 
     // US10 : tir auto
     public ShotResult playerAutoShot() {
-<span class="fc" id="L78">        var cells = playerBoard.untargetedCells();</span>
-<span class="pc bpc" id="L79" title="1 of 2 branches missed.">        if (cells.isEmpty()) {</span>
-<span class="nc" id="L80">            throw new IllegalStateException(&quot;Plus aucune case disponible.&quot;);</span>
+<span class="fc" id="L99">        var cells = playerBoard.untargetedCells();</span>
+<span class="pc bpc" id="L100" title="1 of 2 branches missed.">        if (cells.isEmpty()) {</span>
+<span class="nc" id="L101">            throw new IllegalStateException(&quot;Plus aucune case disponible.&quot;);</span>
         }
 
         // Choisir une case random
-<span class="fc" id="L84">        Coordinate randomTarget = cells.get(new java.util.Random().nextInt(cells.size()));</span>
+<span class="fc" id="L105">        Coordinate randomTarget = cells.get(new java.util.Random().nextInt(cells.size()));</span>
 
-<span class="fc" id="L86">        ShotOutcome outcome = computerBoard.shoot(randomTarget);</span>
+<span class="fc" id="L107">        ShotOutcome outcome = computerBoard.shoot(randomTarget);</span>
 
-<span class="fc" id="L88">        ShotResult result = new ShotResult(</span>
+<span class="fc" id="L109">        ShotResult result = new ShotResult(</span>
                 randomTarget,
                 outcome,
-<span class="pc bpc" id="L91" title="1 of 2 branches missed.">                !computerBoard.hasRemainingShips(),</span>
-<span class="fc" id="L92">                messageFor(&quot;Vous (auto)&quot;, outcome)</span>
+<span class="pc bpc" id="L112" title="1 of 2 branches missed.">                !computerBoard.hasRemainingShips(),</span>
+<span class="fc" id="L113">                messageFor(&quot;Vous (auto)&quot;, outcome)</span>
         );
 
         // Si tu es en US2 : on l’ajoute à l’historique
-<span class="fc" id="L96">        recordShot(lastPlayerShots, result);</span>
+<span class="fc" id="L117">        recordShot(lastPlayerShots, result);</span>
 
-<span class="fc" id="L98">        return result;</span>
+<span class="fc" id="L119">        return result;</span>
     }
 
     public boolean isComputerFleetDestroyed() {
-<span class="pc bpc" id="L102" title="1 of 2 branches missed.">        return !computerBoard.hasRemainingShips();</span>
+<span class="pc bpc" id="L123" title="1 of 2 branches missed.">        return !computerBoard.hasRemainingShips();</span>
     }
 
     public boolean isPlayerFleetDestroyed() {
-<span class="pc bpc" id="L106" title="1 of 2 branches missed.">        return !playerBoard.hasRemainingShips();</span>
+<span class="pc bpc" id="L127" title="1 of 2 branches missed.">        return !playerBoard.hasRemainingShips();</span>
     }
 
     public Board playerBoard() {
-<span class="nc" id="L110">        return playerBoard;</span>
+<span class="nc" id="L131">        return playerBoard;</span>
     }
 
     public Board computerBoard() {
-<span class="nc" id="L114">        return computerBoard;</span>
+<span class="nc" id="L135">        return computerBoard;</span>
     }
 
+    // US8 : score joueur
+    public int getPlayerHits() {
+<span class="fc" id="L140">        return playerHits;</span>
+    }
+
+    public int getPlayerMisses() {
+<span class="fc" id="L144">        return playerMisses;</span>
+    }
+
+    // US8 : score ordinateur
+    public int getComputerHits() {
+<span class="fc" id="L149">        return computerHits;</span>
+    }
+
+    public int getComputerMisses() {
+<span class="fc" id="L153">        return computerMisses;</span>
+    }
+
+
     private String messageFor(String shooter, ShotOutcome outcome) {
-<span class="pc bpc" id="L118" title="1 of 5 branches missed.">        return switch (outcome) {</span>
-<span class="fc" id="L119">            case HIT -&gt; shooter + &quot; a touché un navire !&quot;;</span>
-<span class="fc" id="L120">            case MISS -&gt; shooter + &quot; a tiré dans l'eau.&quot;;</span>
-<span class="fc" id="L121">            case ALREADY_TARGETED -&gt; shooter + &quot; avait déjà visé cette case.&quot;;</span>
-<span class="nc" id="L122">            case INVALID -&gt; shooter + &quot; a visé hors de la grille !&quot;;</span>
-<span class="fc" id="L123">            case ALL_SUNK -&gt; shooter + &quot; vient de couler la dernière cible !&quot;;</span>
+<span class="pc bpc" id="L158" title="1 of 5 branches missed.">        return switch (outcome) {</span>
+<span class="fc" id="L159">            case HIT -&gt; shooter + &quot; a touché un navire !&quot;;</span>
+<span class="fc" id="L160">            case MISS -&gt; shooter + &quot; a tiré dans l'eau.&quot;;</span>
+<span class="fc" id="L161">            case ALREADY_TARGETED -&gt; shooter + &quot; avait déjà visé cette case.&quot;;</span>
+<span class="nc" id="L162">            case INVALID -&gt; shooter + &quot; a visé hors de la grille !&quot;;</span>
+<span class="fc" id="L163">            case ALL_SUNK -&gt; shooter + &quot; vient de couler la dernière cible !&quot;;</span>
         };
     }
 }

@@ -173,5 +173,16 @@ public class GameRunner {
         } else {
             System.out.println("\nPartie interrompue.");
         }
+
+        // US8 : affichage du score cumulatif
+        System.out.println("\n===== Score cumulatif des tirs =====");
+        System.out.println("Vous : "
+                + gameEngine.getPlayerHits() + " touches / "
+                + gameEngine.getPlayerMisses() + " tirs manqués");
+        System.out.println("Ordinateur : "
+                + gameEngine.getComputerHits() + " touches / "
+                + gameEngine.getComputerMisses() + " tirs manqués");
+        System.out.println("====================================");
     }
+
 }

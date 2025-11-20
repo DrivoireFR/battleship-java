@@ -173,6 +173,17 @@ public class GameRunner {
         } else {
 <span class="nc" id="L174">            System.out.println(&quot;\nPartie interrompue.&quot;);</span>
         }
-<span class="nc" id="L176">    }</span>
+
+        // US8 : affichage du score cumulatif
+<span class="nc" id="L178">        System.out.println(&quot;\n===== Score cumulatif des tirs =====&quot;);</span>
+<span class="nc" id="L179">        System.out.println(&quot;Vous : &quot;</span>
+<span class="nc" id="L180">                + gameEngine.getPlayerHits() + &quot; touches / &quot;</span>
+<span class="nc" id="L181">                + gameEngine.getPlayerMisses() + &quot; tirs manqués&quot;);</span>
+<span class="nc" id="L182">        System.out.println(&quot;Ordinateur : &quot;</span>
+<span class="nc" id="L183">                + gameEngine.getComputerHits() + &quot; touches / &quot;</span>
+<span class="nc" id="L184">                + gameEngine.getComputerMisses() + &quot; tirs manqués&quot;);</span>
+<span class="nc" id="L185">        System.out.println(&quot;====================================&quot;);</span>
+<span class="nc" id="L186">    }</span>
+
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>
