@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="fr"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>GameConfiguration.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Terminal Battleship</a> &gt; <a href="index.source.html" class="el_package">com.qualityworkshop.terminalbattleship.game</a> &gt; <span class="el_source">GameConfiguration.java</span></div><h1>GameConfiguration.java</h1><pre class="source lang-java linenums">package com.qualityworkshop.terminalbattleship.game;
+
+import com.qualityworkshop.terminalbattleship.board.Board;
+import com.qualityworkshop.terminalbattleship.strategy.ShotStrategy;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
+
+@Configuration
+<span class="nc" id="L11">public class GameConfiguration {</span>
+
+    private static final int BOARD_SIZE = 6;
+    private static final int SHIP_COUNT = 3;
+
+    @Bean(name = &quot;playerBoard&quot;)
+    public Board playerBoard() {
+<span class="nc" id="L18">        return Board.randomFleet(BOARD_SIZE, SHIP_COUNT);</span>
+    }
+
+    @Bean(name = &quot;computerBoard&quot;)
+    public Board computerBoard() {
+<span class="nc" id="L23">        return Board.randomFleet(BOARD_SIZE, SHIP_COUNT);</span>
+    }
+
+    @Bean
+    @Primary
+    public GameEngine gameEngine(@Qualifier(&quot;playerBoard&quot;) Board playerBoard, 
+                                  @Qualifier(&quot;computerBoard&quot;) Board computerBoard, 
+                                  ShotStrategy strategy) {
+<span class="nc" id="L31">        return new GameEngine(playerBoard, computerBoard, strategy);</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

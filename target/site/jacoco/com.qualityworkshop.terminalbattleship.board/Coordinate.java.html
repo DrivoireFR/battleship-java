@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="fr"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Coordinate.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Terminal Battleship</a> &gt; <a href="index.source.html" class="el_package">com.qualityworkshop.terminalbattleship.board</a> &gt; <span class="el_source">Coordinate.java</span></div><h1>Coordinate.java</h1><pre class="source lang-java linenums">package com.qualityworkshop.terminalbattleship.board;
+
+import java.util.Locale;
+import java.util.Objects;
+
+public record Coordinate(int row, int column) {
+
+    private static final String COLUMNS = &quot;ABCDEF&quot;;
+
+<span class="fc" id="L10">    public Coordinate {</span>
+<span class="pc bpc" id="L11" title="2 of 4 branches missed.">        if (row &lt; 0 || column &lt; 0) {</span>
+<span class="nc" id="L12">            throw new IllegalArgumentException(&quot;Row and column must be positive&quot;);</span>
+        }
+<span class="fc" id="L14">    }</span>
+
+    public static Coordinate fromInput(String input) {
+<span class="fc" id="L17">        Objects.requireNonNull(input, &quot;input&quot;);</span>
+<span class="fc" id="L18">        String trimmed = input.trim().toUpperCase(Locale.ROOT);</span>
+<span class="pc bpc" id="L19" title="2 of 4 branches missed.">        if (trimmed.length() &lt; 2 || trimmed.length() &gt; 3) {</span>
+<span class="nc" id="L20">            throw new IllegalArgumentException(&quot;Format attendu: lettre + nombre (ex: B3)&quot;);</span>
+        }
+<span class="fc" id="L22">        char columnLetter = trimmed.charAt(0);</span>
+<span class="fc" id="L23">        int columnIndex = COLUMNS.indexOf(columnLetter);</span>
+<span class="fc bfc" id="L24" title="All 2 branches covered.">        if (columnIndex &lt; 0) {</span>
+<span class="fc" id="L25">            throw new IllegalArgumentException(&quot;Lettre hors grille: &quot; + columnLetter);</span>
+        }
+        int rowValue;
+        try {
+<span class="fc" id="L29">            rowValue = Integer.parseInt(trimmed.substring(1));</span>
+<span class="nc" id="L30">        } catch (NumberFormatException e) {</span>
+<span class="nc" id="L31">            throw new IllegalArgumentException(&quot;Index de ligne invalide&quot;);</span>
+<span class="fc" id="L32">        }</span>
+<span class="pc bpc" id="L33" title="2 of 4 branches missed.">        if (rowValue &lt; 1 || rowValue &gt; 6) {</span>
+<span class="nc" id="L34">            throw new IllegalArgumentException(&quot;La ligne doit être comprise entre 1 et 6&quot;);</span>
+        }
+<span class="fc" id="L36">        return new Coordinate(rowValue - 1, columnIndex);</span>
+    }
+
+    @Override
+    public String toString() {
+<span class="nc" id="L41">        char columnLetter = COLUMNS.charAt(column);</span>
+<span class="nc" id="L42">        return String.format(&quot;%c%d&quot;, columnLetter, row + 1);</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

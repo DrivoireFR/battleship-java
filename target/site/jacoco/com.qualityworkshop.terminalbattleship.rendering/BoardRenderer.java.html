@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="fr"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>BoardRenderer.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Terminal Battleship</a> &gt; <a href="index.source.html" class="el_package">com.qualityworkshop.terminalbattleship.rendering</a> &gt; <span class="el_source">BoardRenderer.java</span></div><h1>BoardRenderer.java</h1><pre class="source lang-java linenums">package com.qualityworkshop.terminalbattleship.rendering;
+
+import com.qualityworkshop.terminalbattleship.board.Board;
+import com.qualityworkshop.terminalbattleship.board.CellState;
+
+public final class BoardRenderer {
+
+    private BoardRenderer() {
+    }
+
+    public static String render(Board board, boolean revealShips) {
+<span class="fc" id="L12">        StringBuilder builder = new StringBuilder();</span>
+<span class="fc" id="L13">        builder.append(&quot;  A B C D E F\n&quot;);</span>
+<span class="fc bfc" id="L14" title="All 2 branches covered.">        for (int row = 0; row &lt; board.size(); row++) {</span>
+<span class="fc" id="L15">            builder.append(row + 1).append(' ');</span>
+<span class="fc bfc" id="L16" title="All 2 branches covered.">            for (int col = 0; col &lt; board.size(); col++) {</span>
+<span class="fc" id="L17">                CellState state = board.cellAt(new com.qualityworkshop.terminalbattleship.board.Coordinate(row, col));</span>
+<span class="fc" id="L18">                builder.append(state.glyph(revealShips));</span>
+<span class="fc bfc" id="L19" title="All 2 branches covered.">                if (col &lt; board.size() - 1) {</span>
+<span class="fc" id="L20">                    builder.append(' ');</span>
+                }
+            }
+<span class="fc" id="L23">            builder.append('\n');</span>
+        }
+<span class="fc" id="L25">        return builder.toString();</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>
