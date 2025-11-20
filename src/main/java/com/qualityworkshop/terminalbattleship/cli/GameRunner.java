@@ -38,6 +38,14 @@ public class GameRunner {
     }
 
     private void displayBoards() {
+        System.out.println("\n--- Historique des 3 derniers coups ---");
+        if (gameEngine.shotHistory().isEmpty()) {
+            System.out.println("Aucun tir pour l'instant.");
+        } else {
+            gameEngine.shotHistory().getLastThree().forEach(record ->
+                    System.out.println("  " + record));
+        }
+
         System.out.println("\nVotre grille");
         System.out.println(BoardRenderer.render(gameEngine.playerBoard(), true));
         System.out.println("\nGrille adverse (brouillard)");
