@@ -44,7 +44,8 @@ public class GameRunner {
         System.out.println(BoardRenderer.render(gameEngine.computerBoard(), false));
     }
 
-    private ShotResult askForPlayerShot() {
+    ShotResult askForPlayerShot() {
+        long start = System.currentTimeMillis();
         while (true) {
             System.out.print("Entrez une coordonnée (ex: e5): ");
             String input = scanner.nextLine().trim();
@@ -52,6 +53,8 @@ public class GameRunner {
                 System.exit(0);
             }
             try {
+                long end = System.currentTimeMillis();
+                System.out.println("Réponse en " + calculerTempsReponseEnSeconde(start, end) + " secondes");
                 return gameEngine.playerShoots(input);
             } catch (IllegalArgumentException ex) {
                 System.out.println("Entrée invalide: " + ex.getMessage());
@@ -67,5 +70,9 @@ public class GameRunner {
         } else {
             System.out.println("\nPartie interrompue.");
         }
+    }
+
+    public double calculerTempsReponseEnSeconde(long start, long end){
+        return (double) (end - start) / 1000;
     }
 }
