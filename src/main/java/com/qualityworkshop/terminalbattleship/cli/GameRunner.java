@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 import java.util.Scanner;
 
 @Component
-public class GameRunner {
+public abstract class GameRunner {
 
     private final GameEngine gameEngine;
     private final Scanner scanner;
@@ -44,7 +44,7 @@ public class GameRunner {
         System.out.println(BoardRenderer.render(gameEngine.computerBoard(), false));
     }
 
-    private ShotResult askForPlayerShot() {
+    public ShotResult askForPlayerShot() {
         while (true) {
 
             System.out.print("Entrez une coordonnée (ex: e5) ou 'help': ");
@@ -90,4 +90,5 @@ public class GameRunner {
         System.out.println(regles);
     }
 
+    protected abstract void exitGame();
 }
