@@ -60,6 +60,9 @@ public class GameRunner {
 
             if (input.equalsIgnoreCase("quit")) {
                 System.exit(0);
+            } else if (input.equalsIgnoreCase("help")) { // Nouvelle condition pour la commande help
+                displayHelp();
+                continue; // Redemande une coordonnée sans que cela compte comme un tour
             }
             try {
                 return gameEngine.playerShoots(input);
@@ -67,6 +70,19 @@ public class GameRunner {
                 System.out.println("Entrée invalide: " + ex.getMessage());
             }
         }
+    }
+
+    private void displayHelp() {
+        System.out.println("\n--- AIDE BATTLESHIP ---");
+        System.out.println("Le but du jeu est de couler tous les navires de l'ordinateur.");
+        System.out.println("Vous et l'ordinateur tirez à tour de rôle.");
+        System.out.println("Pour tirer, entrez une coordonnée au format 'LettreChiffre' (ex: e5, A3).");
+        System.out.println("  - 'X' indique un tir manqué.");
+        System.out.println("  - 'O' indique un navire touché.");
+        System.out.println("  - 'S' indique un navire coulé.");
+        System.out.println("Tapez 'quit' pour quitter la partie à tout moment.");
+        System.out.println("Tapez 'help' pour afficher cette aide.");
+        System.out.println("-----------------------\n");
     }
 
     private void endGameMessage() {

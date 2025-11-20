@@ -5,32 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6140f3a9-5bc5-4ded-b345-8d036e971685" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/qualityworkshop/terminalbattleship/cli/GameRunner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/qualityworkshop/terminalbattleship/cli/GameRunner.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/qualityworkshop/terminalbattleship/cli/GameRunner.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/qualityworkshop/terminalbattleship/cli/GameRunner.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/cpd.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/cpd.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/jacoco.exec" beforeDir="false" afterPath="$PROJECT_DIR$/target/jacoco.exec" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/site/jacoco/com.qualityworkshop.terminalbattleship.cli/GameRunner.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/site/jacoco/com.qualityworkshop.terminalbattleship.cli/GameRunner.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/site/jacoco/com.qualityworkshop.terminalbattleship.cli/GameRunner.java.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/site/jacoco/com.qualityworkshop.terminalbattleship.cli/GameRunner.java.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/site/jacoco/com.qualityworkshop.terminalbattleship.cli/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/site/jacoco/com.qualityworkshop.terminalbattleship.cli/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/site/jacoco/com.qualityworkshop.terminalbattleship.cli/index.source.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/site/jacoco/com.qualityworkshop.terminalbattleship.cli/index.source.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/site/jacoco/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/site/jacoco/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/site/jacoco/jacoco-sessions.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/site/jacoco/jacoco-sessions.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/site/jacoco/jacoco.csv" beforeDir="false" afterPath="$PROJECT_DIR$/target/site/jacoco/jacoco.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/site/jacoco/jacoco.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/site/jacoco/jacoco.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire-reports/2025-11-19T17-34-47_812-jvmRun1-commands.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire-reports/2025-11-19T17-34-47_812-jvmRun1-events.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-com.qualityworkshop.terminalbattleship.game.GameEngineTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-com.qualityworkshop.terminalbattleship.game.GameEngineTest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-com.qualityworkshop.terminalbattleship.rendering.BoardRendererTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-com.qualityworkshop.terminalbattleship.rendering.BoardRendererTest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-com.qualityworkshop.terminalbattleship.strategy.RandomShotStrategyTest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-com.qualityworkshop.terminalbattleship.strategy.RandomShotStrategyTest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire-reports/com.qualityworkshop.terminalbattleship.game.GameEngineTest.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/com.qualityworkshop.terminalbattleship.game.GameEngineTest.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire-reports/com.qualityworkshop.terminalbattleship.rendering.BoardRendererTest.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/com.qualityworkshop.terminalbattleship.rendering.BoardRendererTest.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire-reports/com.qualityworkshop.terminalbattleship.strategy.RandomShotStrategyTest.txt" beforeDir="false" afterPath="$PROJECT_DIR$/target/surefire-reports/com.qualityworkshop.terminalbattleship.strategy.RandomShotStrategyTest.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/terminal-battleship-0.0.1-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/terminal-battleship-0.0.1-SNAPSHOT.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/qualityworkshop/terminalbattleship/game/GameEngineTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/qualityworkshop/terminalbattleship/game/GameEngineTest.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,44 +24,44 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Maven.terminal-battleship [clean].executor": "Run",
-    "Maven.terminal-battleship [compile].executor": "Run",
-    "Maven.terminal-battleship [org.apache.maven.plugins:maven-install-plugin:3.1.2:install-file].executor": "Run",
-    "Maven.terminal-battleship [org.apache.maven.plugins:maven-install-plugin:3.1.2:install].executor": "Run",
-    "Maven.terminal-battleship [org.springframework.boot:spring-boot-maven-plugin:3.2.5:run].executor": "Run",
-    "Maven.terminal-battleship [package].executor": "Run",
-    "Maven.terminal-battleship [verify].executor": "Run",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "Spring Boot.TerminalBattleshipApplication.executor": "Run",
-    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultAutoModeForALLUsers.v1": "true",
-    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
-    "git-widget-placeholder": "feature/US5-timer-de-tour",
-    "ignore.virus.scanning.warn.message": "true",
-    "junie.onboarding.icon.badge.shown": "true",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/HP/IdeaProjects/battleship-java",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "to.speed.mode.migration.done": "true",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Maven.terminal-battleship [clean].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.terminal-battleship [compile].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.terminal-battleship [org.apache.maven.plugins:maven-install-plugin:3.1.2:install-file].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.terminal-battleship [org.apache.maven.plugins:maven-install-plugin:3.1.2:install].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.terminal-battleship [org.springframework.boot:spring-boot-maven-plugin:3.2.5:run].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.terminal-battleship [package].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.terminal-battleship [verify].executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;Spring Boot.TerminalBattleshipApplication.executor&quot;: &quot;Run&quot;,
+    &quot;com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultAutoModeForALLUsers.v1&quot;: &quot;true&quot;,
+    &quot;com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;raniaAb&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/HP/IdeaProjects/battleship-java&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;to.speed.mode.migration.done&quot;: &quot;true&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration default="true" type="JetRunConfigurationType">
       <module name="battleship-java" />

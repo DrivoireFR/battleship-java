@@ -60,23 +60,39 @@ public class GameRunner {
 
 <span class="nc bnc" id="L61" title="All 2 branches missed.">            if (input.equalsIgnoreCase(&quot;quit&quot;)) {</span>
 <span class="nc" id="L62">                System.exit(0);</span>
+<span class="nc bnc" id="L63" title="All 2 branches missed.">            } else if (input.equalsIgnoreCase(&quot;help&quot;)) { // Nouvelle condition pour la commande help</span>
+<span class="nc" id="L64">                displayHelp();</span>
+<span class="nc" id="L65">                continue; // Redemande une coordonnée sans que cela compte comme un tour</span>
             }
             try {
-<span class="nc" id="L65">                return gameEngine.playerShoots(input);</span>
-<span class="nc" id="L66">            } catch (IllegalArgumentException ex) {</span>
-<span class="nc" id="L67">                System.out.println(&quot;Entrée invalide: &quot; + ex.getMessage());</span>
+<span class="nc" id="L68">                return gameEngine.playerShoots(input);</span>
+<span class="nc" id="L69">            } catch (IllegalArgumentException ex) {</span>
+<span class="nc" id="L70">                System.out.println(&quot;Entrée invalide: &quot; + ex.getMessage());</span>
             }
-<span class="nc" id="L69">        }</span>
+<span class="nc" id="L72">        }</span>
     }
 
+    private void displayHelp() {
+<span class="nc" id="L76">        System.out.println(&quot;\n--- AIDE BATTLESHIP ---&quot;);</span>
+<span class="nc" id="L77">        System.out.println(&quot;Le but du jeu est de couler tous les navires de l'ordinateur.&quot;);</span>
+<span class="nc" id="L78">        System.out.println(&quot;Vous et l'ordinateur tirez à tour de rôle.&quot;);</span>
+<span class="nc" id="L79">        System.out.println(&quot;Pour tirer, entrez une coordonnée au format 'LettreChiffre' (ex: e5, A3).&quot;);</span>
+<span class="nc" id="L80">        System.out.println(&quot;  - 'X' indique un tir manqué.&quot;);</span>
+<span class="nc" id="L81">        System.out.println(&quot;  - 'O' indique un navire touché.&quot;);</span>
+<span class="nc" id="L82">        System.out.println(&quot;  - 'S' indique un navire coulé.&quot;);</span>
+<span class="nc" id="L83">        System.out.println(&quot;Tapez 'quit' pour quitter la partie à tout moment.&quot;);</span>
+<span class="nc" id="L84">        System.out.println(&quot;Tapez 'help' pour afficher cette aide.&quot;);</span>
+<span class="nc" id="L85">        System.out.println(&quot;-----------------------\n&quot;);</span>
+<span class="nc" id="L86">    }</span>
+
     private void endGameMessage() {
-<span class="nc bnc" id="L73" title="All 2 branches missed.">        if (gameEngine.isComputerFleetDestroyed()) {</span>
-<span class="nc" id="L74">            System.out.println(&quot;\nBravo, vous avez coulé tous les navires adverses!&quot;);</span>
-<span class="nc bnc" id="L75" title="All 2 branches missed.">        } else if (gameEngine.isPlayerFleetDestroyed()) {</span>
-<span class="nc" id="L76">            System.out.println(&quot;\nDommage! L'ordinateur a gagné cette fois.&quot;);</span>
+<span class="nc bnc" id="L89" title="All 2 branches missed.">        if (gameEngine.isComputerFleetDestroyed()) {</span>
+<span class="nc" id="L90">            System.out.println(&quot;\nBravo, vous avez coulé tous les navires adverses!&quot;);</span>
+<span class="nc bnc" id="L91" title="All 2 branches missed.">        } else if (gameEngine.isPlayerFleetDestroyed()) {</span>
+<span class="nc" id="L92">            System.out.println(&quot;\nDommage! L'ordinateur a gagné cette fois.&quot;);</span>
         } else {
-<span class="nc" id="L78">            System.out.println(&quot;\nPartie interrompue.&quot;);</span>
+<span class="nc" id="L94">            System.out.println(&quot;\nPartie interrompue.&quot;);</span>
         }
-<span class="nc" id="L80">    }</span>
+<span class="nc" id="L96">    }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>
