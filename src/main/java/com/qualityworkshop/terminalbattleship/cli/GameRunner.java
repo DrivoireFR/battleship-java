@@ -73,6 +73,13 @@ public class GameRunner {
                 System.exit(0);
             }
 
+            // US3 : commande help
+            if (input.equalsIgnoreCase("help")) {
+                displayHelp();
+                // on ne tire pas, on redemande une coordonnée
+                continue;
+            }
+
             if (!isInputValid(input)) {
                 System.out.println("Entrée invalide : vous devez saisir une coordonnée.");
                 continue;
@@ -84,6 +91,17 @@ public class GameRunner {
                 System.out.println("Entrée invalide: " + ex.getMessage());
             }
         }
+    }
+
+    // US3 : affichage de l'aide
+    private void displayHelp() {
+        System.out.println("\n===== Aide - Règles du jeu =====");
+        System.out.println("- Objectif : couler tous les navires de l'adversaire.");
+        System.out.println("- Entrez une coordonnée sous la forme lettre + chiffre (ex: A3, e5).");
+        System.out.println("- Les lettres représentent les colonnes, les chiffres les lignes.");
+        System.out.println("- 'quit' : quitter la partie.");
+        System.out.println("- 'help' : afficher cette aide.");
+        System.out.println("================================\n");
     }
 
     // US2 - Affichage historique joueur
