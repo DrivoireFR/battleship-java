@@ -44,10 +44,17 @@ public class GameRunner {
         System.out.println(BoardRenderer.render(gameEngine.computerBoard(), false));
     }
 
+
+
+
     private ShotResult askForPlayerShot() {
         while (true) {
             System.out.print("Entrez une coordonnée (ex: e5): ");
+            long start = System.currentTimeMillis();
             String input = scanner.nextLine().trim();
+            long end = System.currentTimeMillis();
+            long tempsReponse = calculerTempsReponse(start, end);
+            System.out.println("Réponse en " + tempsReponse + " secondes");
             if (input.equalsIgnoreCase("quit")) {
                 System.exit(0);
             }
@@ -67,5 +74,9 @@ public class GameRunner {
         } else {
             System.out.println("\nPartie interrompue.");
         }
+    }
+
+    long calculerTempsReponse(long start, long end){
+        return (end - start) / 1000;
     }
 }
