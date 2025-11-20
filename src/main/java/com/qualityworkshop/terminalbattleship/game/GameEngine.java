@@ -6,12 +6,15 @@ import com.qualityworkshop.terminalbattleship.strategy.ShotStrategy;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
+
 @Component
 public class GameEngine {
 
     private final Board playerBoard;
     private final Board computerBoard;
     private final ShotStrategy computerStrategy;
+    static ArrayList<String> HistoriqueTirJoueurAléatoire = new ArrayList<>();
 
     public GameEngine(@Qualifier("playerBoard") Board playerBoard,
                       @Qualifier("computerBoard") Board computerBoard,
@@ -29,6 +32,27 @@ public class GameEngine {
                 outcome,
                 !computerBoard.hasRemainingShips(),
                 messageFor("Vous", outcome));
+    }
+
+    public ShotResult playerShootsRandomly() {
+
+        Coordinate target = computerStrategy.pickTarget(computerBoard);
+
+
+        while (HistoriqueTirJoueurAléatoire.contains(target.toString())) {
+            target = computerStrategy.pickTarget(computerBoard);
+        }
+
+        HistoriqueTirJoueurAléatoire.add(target.toString());
+
+        ShotOutcome outcome = computerBoard.shoot(target);
+
+        return new ShotResult(
+                target,
+                outcome,
+                !computerBoard.hasRemainingShips(),
+                messageFor("Vous avez tiré aléatoirement "  + target + ". Joueur", outcome)
+        );
     }
 
     public ShotResult computerShoots() {
