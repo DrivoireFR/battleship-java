@@ -46,11 +46,21 @@ public class GameRunner {
 
     private ShotResult askForPlayerShot() {
         while (true) {
-            System.out.print("Entrez une coordonnée (ex: e5): ");
+
+            System.out.print("Entrez une coordonnée (ex: e5) ou 'help': ");
             String input = scanner.nextLine().trim();
+
+            System.out.println(timer.displayElapsedTime());
+
             if (input.equalsIgnoreCase("quit")) {
                 System.exit(0);
             }
+
+            if (input.equalsIgnoreCase("help")) {
+                afficherRegles();
+                continue;
+            }
+
             try {
                 return gameEngine.playerShoots(input);
             } catch (IllegalArgumentException ex) {
@@ -58,6 +68,7 @@ public class GameRunner {
             }
         }
     }
+
 
     private void endGameMessage() {
         if (gameEngine.isComputerFleetDestroyed()) {
