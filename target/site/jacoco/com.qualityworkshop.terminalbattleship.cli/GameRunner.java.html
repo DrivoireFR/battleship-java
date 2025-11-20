@@ -46,27 +46,40 @@ public class GameRunner {
 
     private ShotResult askForPlayerShot() {
         while (true) {
-<span class="nc" id="L49">            System.out.print(&quot;Entrez une coordonnée (ex: e5): &quot;);</span>
+<span class="nc" id="L49">            System.out.print(&quot;Entrez une coordonnée (ex: e5) ou tapez 'auto': &quot;);</span>
 <span class="nc" id="L50">            String input = scanner.nextLine().trim();</span>
-<span class="nc bnc" id="L51" title="All 2 branches missed.">            if (input.equalsIgnoreCase(&quot;quit&quot;)) {</span>
-<span class="nc" id="L52">                System.exit(0);</span>
+
+<span class="nc bnc" id="L52" title="All 2 branches missed.">            if (input.equalsIgnoreCase(&quot;quit&quot;)) {</span>
+<span class="nc" id="L53">                System.exit(0);</span>
             }
+
+<span class="nc bnc" id="L56" title="All 2 branches missed.">            if (input.equalsIgnoreCase(&quot;auto&quot;)) {</span>
+                try {
+<span class="nc" id="L58">                    return gameEngine.playerShootsRandom();</span>
+<span class="nc" id="L59">                } catch (IllegalStateException ex) {</span>
+<span class="nc" id="L60">                    System.out.println(&quot;Impossible : &quot; + ex.getMessage());</span>
+<span class="nc" id="L61">                    continue;</span>
+                }
+            }
+
             try {
-<span class="nc" id="L55">                return gameEngine.playerShoots(input);</span>
-<span class="nc" id="L56">            } catch (IllegalArgumentException ex) {</span>
-<span class="nc" id="L57">                System.out.println(&quot;Entrée invalide: &quot; + ex.getMessage());</span>
+<span class="nc" id="L66">                return gameEngine.playerShoots(input);</span>
+<span class="nc" id="L67">            } catch (IllegalArgumentException ex) {</span>
+<span class="nc" id="L68">                System.out.println(&quot;Entrée invalide: &quot; + ex.getMessage());</span>
             }
-<span class="nc" id="L59">        }</span>
+<span class="nc" id="L70">        }</span>
     }
 
+
+
     private void endGameMessage() {
-<span class="nc bnc" id="L63" title="All 2 branches missed.">        if (gameEngine.isComputerFleetDestroyed()) {</span>
-<span class="nc" id="L64">            System.out.println(&quot;\nBravo, vous avez coulé tous les navires adverses!&quot;);</span>
-<span class="nc bnc" id="L65" title="All 2 branches missed.">        } else if (gameEngine.isPlayerFleetDestroyed()) {</span>
-<span class="nc" id="L66">            System.out.println(&quot;\nDommage! L'ordinateur a gagné cette fois.&quot;);</span>
+<span class="nc bnc" id="L76" title="All 2 branches missed.">        if (gameEngine.isComputerFleetDestroyed()) {</span>
+<span class="nc" id="L77">            System.out.println(&quot;\nBravo, vous avez coulé tous les navires adverses!&quot;);</span>
+<span class="nc bnc" id="L78" title="All 2 branches missed.">        } else if (gameEngine.isPlayerFleetDestroyed()) {</span>
+<span class="nc" id="L79">            System.out.println(&quot;\nDommage! L'ordinateur a gagné cette fois.&quot;);</span>
         } else {
-<span class="nc" id="L68">            System.out.println(&quot;\nPartie interrompue.&quot;);</span>
+<span class="nc" id="L81">            System.out.println(&quot;\nPartie interrompue.&quot;);</span>
         }
-<span class="nc" id="L70">    }</span>
+<span class="nc" id="L83">    }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>
