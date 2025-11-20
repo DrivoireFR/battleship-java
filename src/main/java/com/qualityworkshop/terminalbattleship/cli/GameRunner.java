@@ -48,6 +48,7 @@ public class GameRunner {
         while (true) {
             System.out.print("Entrez une coordonnée (ex: e5): ");
             String input = scanner.nextLine().trim();
+            verifierInputJoueur(input);
             try {
                 return gameEngine.playerShoots(input);
             } catch (IllegalArgumentException ex) {

@@ -5,7 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6de547c0-c083-4314-aaef-1c2ec2c78d08" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/qualityworkshop/terminalbattleship/cli/GameRunner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/qualityworkshop/terminalbattleship/cli/GameRunner.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/qualityworkshop/terminalbattleship/cli/GameRunnerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/qualityworkshop/terminalbattleship/cli/GameRunnerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/qualityworkshop/terminalbattleship/cli/GameRunner.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/qualityworkshop/terminalbattleship/cli/GameRunner.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,6 +49,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "JUnit.GameRunnerTest.shouldPrintRulesWhenHelpCommand.executor": "Run",
     "JUnit.GameRunnerTest.shouldReturnDurationAboveSixtySeconds.executor": "Run",
     "JavaScript Debug.index.html.executor": "Run",
     "Maven.terminal-battleship [clean].executor": "Run",
@@ -78,6 +81,22 @@
   }
 }]]></component>
   <component name="RunManager" selected="Spring Boot.TerminalBattleshipApplication">
+    <configuration name="GameRunnerTest.shouldPrintRulesWhenHelpCommand" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="terminal-battleship" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.qualityworkshop.terminalbattleship.cli.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.qualityworkshop.terminalbattleship.cli" />
+      <option name="MAIN_CLASS_NAME" value="com.qualityworkshop.terminalbattleship.cli.GameRunnerTest" />
+      <option name="METHOD_NAME" value="shouldPrintRulesWhenHelpCommand" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="GameRunnerTest.shouldReturnDurationAboveSixtySeconds" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="terminal-battleship" />
       <extension name="coverage">
@@ -134,6 +153,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.GameRunnerTest.shouldPrintRulesWhenHelpCommand" />
         <item itemvalue="JUnit.GameRunnerTest.shouldReturnDurationAboveSixtySeconds" />
         <item itemvalue="JavaScript Debug.index.html" />
       </list>
