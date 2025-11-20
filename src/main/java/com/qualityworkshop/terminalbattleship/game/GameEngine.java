@@ -1,5 +1,7 @@
 package com.qualityworkshop.terminalbattleship.game;
 
+import java.util.Optional;
+
 import com.qualityworkshop.terminalbattleship.board.Board;
 import com.qualityworkshop.terminalbattleship.board.Coordinate;
 import com.qualityworkshop.terminalbattleship.strategy.ShotStrategy;
@@ -12,6 +14,19 @@ public class GameEngine {
     private final Board playerBoard;
     private final Board computerBoard;
     private final ShotStrategy computerStrategy;
+
+    private String IAHistorique = "";
+
+    public String getIAHistorique() {
+        return IAHistorique;
+    }
+
+    public void UpdateHistorique(String lastShot) {
+        if (IAHistorique.length() >= 3 * 2) { // 3 shots
+            IAHistorique = IAHistorique.substring(2); // remove oldest shot
+        }
+        IAHistorique += lastShot;
+    }
 
     public GameEngine(@Qualifier("playerBoard") Board playerBoard,
                       @Qualifier("computerBoard") Board computerBoard,
@@ -31,8 +46,9 @@ public class GameEngine {
                 messageFor("Vous", outcome));
     }
 
-    public ShotResult computerShoots() {
-        Coordinate target = computerStrategy.pickTarget(playerBoard);
+    public ShotResult computerShoots(Optional<Coordinate> forcedTarget) {
+        Coordinate target = forcedTarget.orElseGet(() -> computerStrategy.pickTarget(playerBoard));
+        UpdateHistorique(target.toString());
         ShotOutcome outcome = playerBoard.shoot(target);
         return new ShotResult(
                 target,
