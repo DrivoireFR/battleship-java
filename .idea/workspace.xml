@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="6de547c0-c083-4314-aaef-1c2ec2c78d08" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/qualityworkshop/terminalbattleship/cli/GameRunnerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/qualityworkshop/terminalbattleship/cli/GameRunnerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/qualityworkshop/terminalbattleship/cli/GameRunner.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/qualityworkshop/terminalbattleship/cli/GameRunner.class" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;NicolasPons&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/DrivoireFR/battleship-java.git&quot;,
+    &quot;accountId&quot;: &quot;31c871e0-0a97-4999-b27d-d680ed8206a0&quot;
+  }
+}</component>
+  <component name="ProjectCodeStyleSettingsMigration">
+    <option name="version" value="2" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 5
+}</component>
+  <component name="ProjectId" id="35jiE462dZnEnoHgeOU1tauRr61" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "JUnit.GameRunnerTest.shouldPrintRulesWhenHelpCommand.executor": "Run",
+    "JUnit.GameRunnerTest.shouldReturnDurationAboveSixtySeconds.executor": "Run",
+    "JavaScript Debug.index.html.executor": "Run",
+    "Maven.terminal-battleship [clean].executor": "Run",
+    "Maven.terminal-battleship [compile].executor": "Run",
+    "Maven.terminal-battleship [test].executor": "Run",
+    "Maven.terminal-battleship [validate].executor": "Run",
+    "Maven.terminal-battleship [verify].executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "Spring Boot.TerminalBattleshipApplication.executor": "Run",
+    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
+    "git-widget-placeholder": "feature/NP/US3-Help",
+    "junie.onboarding.icon.badge.shown": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/ponsn/Documents/Bureau Non Sync/Bachelor AL/Otpi code et sécu/TP-Battelship/battleship-java",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "to.speed.mode.migration.done": "true",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RunManager" selected="Spring Boot.TerminalBattleshipApplication">
+    <configuration name="GameRunnerTest.shouldPrintRulesWhenHelpCommand" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="terminal-battleship" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.qualityworkshop.terminalbattleship.cli.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.qualityworkshop.terminalbattleship.cli" />
+      <option name="MAIN_CLASS_NAME" value="com.qualityworkshop.terminalbattleship.cli.GameRunnerTest" />
+      <option name="METHOD_NAME" value="shouldPrintRulesWhenHelpCommand" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="GameRunnerTest.shouldReturnDurationAboveSixtySeconds" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="terminal-battleship" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.qualityworkshop.terminalbattleship.cli.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.qualityworkshop.terminalbattleship.cli" />
+      <option name="MAIN_CLASS_NAME" value="com.qualityworkshop.terminalbattleship.cli.GameRunnerTest" />
+      <option name="METHOD_NAME" value="shouldReturnDurationAboveSixtySeconds" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="index.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/battleship-java/terminal-battleship/target/site/jacoco/index.html" useBuiltInWebServerPort="true">
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="battleship-java" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="PythonConfigurationType" factoryName="Python">
+      <module name="battleship-java" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="TerminalBattleshipApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="terminal-battleship" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.qualityworkshop.terminalbattleship.TerminalBattleshipApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.GameRunnerTest.shouldPrintRulesWhenHelpCommand" />
+        <item itemvalue="JUnit.GameRunnerTest.shouldReturnDurationAboveSixtySeconds" />
+        <item itemvalue="JavaScript Debug.index.html" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9823dce3aa75-bf35d07a577b-intellij.indexing.shared.core-IU-252.26199.169" />
+        <option value="bundled-js-predefined-d6986cc7102b-9c94529fcfe0-JavaScript-IU-252.26199.169" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="6de547c0-c083-4314-aaef-1c2ec2c78d08" name="Changes" comment="" />
+      <created>1763629768463</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1763629768463</updated>
+      <workItem from="1763629770813" duration="6321000" />
+      <workItem from="1763636545865" duration="344000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
