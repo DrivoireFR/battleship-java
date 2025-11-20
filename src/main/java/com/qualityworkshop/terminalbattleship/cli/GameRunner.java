@@ -6,6 +6,7 @@ import com.qualityworkshop.terminalbattleship.rendering.BoardRenderer;
 import org.springframework.stereotype.Component;
 
 import java.util.Scanner;
+import java.util.concurrent.TimeUnit;
 
 @Component
 public class GameRunner {
@@ -47,7 +48,16 @@ public class GameRunner {
     private ShotResult askForPlayerShot() {
         while (true) {
             System.out.print("Entrez une coordonnée (ex: e5): ");
+            long startTime = System.currentTimeMillis();
+
             String input = scanner.nextLine().trim();
+
+            long endTime = System.currentTimeMillis();
+            long duration = endTime - startTime;
+            long seconds = TimeUnit.MILLISECONDS.toSeconds(duration);
+
+            System.out.printf("Réponse en %d secondes.\n", seconds);
+
             if (input.equalsIgnoreCase("quit")) {
                 System.exit(0);
             }
