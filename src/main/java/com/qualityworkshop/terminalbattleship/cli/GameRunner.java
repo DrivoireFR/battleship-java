@@ -51,10 +51,15 @@ public class GameRunner {
             if (input.equalsIgnoreCase("quit")) {
                 System.exit(0);
             }
-            try {
-                return gameEngine.playerShoots(input);
-            } catch (IllegalArgumentException ex) {
-                System.out.println("Entrée invalide: " + ex.getMessage());
+            if (input.equalsIgnoreCase("auto")) {
+                return gameEngine.playerShootsRandomly();
+            }
+            else {
+                try {
+                    return gameEngine.playerShoots(input);
+                } catch (IllegalArgumentException ex) {
+                    System.out.println("Entrée invalide: " + ex.getMessage());
+                }
             }
         }
     }
