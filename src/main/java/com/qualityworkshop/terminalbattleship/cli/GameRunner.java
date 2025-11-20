@@ -22,7 +22,7 @@ public class GameRunner {
         System.out.println("Bienvenue dans Terminal Battleship ! Tapez 'quit' pour arrêter.\n");
         while (!gameEngine.isComputerFleetDestroyed() && !gameEngine.isPlayerFleetDestroyed()) {
             displayBoards();
-            ShotResult playerResult = askForPlayerShot();
+            ShotResult playerResult = askForPlayerShot(false);
             System.out.println(playerResult.message());
             if (playerResult.gameOver()) {
                 break;
@@ -37,15 +37,20 @@ public class GameRunner {
         endGameMessage();
     }
 
-    private void displayBoards() {
+    public void displayBoards() {
         System.out.println("\nVotre grille");
         System.out.println(BoardRenderer.render(gameEngine.playerBoard(), true));
         System.out.println("\nGrille adverse (brouillard)");
         System.out.println(BoardRenderer.render(gameEngine.computerBoard(), false));
     }
 
-    private ShotResult askForPlayerShot() {
-        while (true) {
+    /***
+     * Demande au joueur d'entrer une coordonnée de tir jusqu'à ce qu'une entrée valide soit fournie.
+     * @param debug Indique si le mode debug est activé (Un seul passage)
+     * @return
+     */
+    public ShotResult askForPlayerShot(boolean debug) {
+        while (!debug) {
             System.out.print("Entrez une coordonnée (ex: e5): ");
             String input = scanner.nextLine().trim();
             if (input.equalsIgnoreCase("quit")) {
@@ -57,9 +62,10 @@ public class GameRunner {
                 System.out.println("Entrée invalide: " + ex.getMessage());
             }
         }
+        return null;
     }
 
-    private void endGameMessage() {
+    public void endGameMessage() {
         if (gameEngine.isComputerFleetDestroyed()) {
             System.out.println("\nBravo, vous avez coulé tous les navires adverses!");
         } else if (gameEngine.isPlayerFleetDestroyed()) {
