@@ -1,3 +1,4 @@
-/Users/dimitririvoire/Documents/dev/freelance/teach/tp-battleship-java/src/test/java/com/qualityworkshop/terminalbattleship/game/GameEngineTest.java
-/Users/dimitririvoire/Documents/dev/freelance/teach/tp-battleship-java/src/test/java/com/qualityworkshop/terminalbattleship/rendering/BoardRendererTest.java
-/Users/dimitririvoire/Documents/dev/freelance/teach/tp-battleship-java/src/test/java/com/qualityworkshop/terminalbattleship/strategy/RandomShotStrategyTest.java
+C:\Users\whouel\ESGI\Qualite\battleship-java\src\test\java\com\qualityworkshop\terminalbattleship\rendering\BoardRendererTest.java
+C:\Users\whouel\ESGI\Qualite\battleship-java\src\test\java\com\qualityworkshop\terminalbattleship\cli\GameRunnerTest.java
+C:\Users\whouel\ESGI\Qualite\battleship-java\src\test\java\com\qualityworkshop\terminalbattleship\strategy\RandomShotStrategyTest.java
+C:\Users\whouel\ESGI\Qualite\battleship-java\src\test\java\com\qualityworkshop\terminalbattleship\game\GameEngineTest.java
