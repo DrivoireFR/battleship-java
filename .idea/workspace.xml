@@ -4,34 +4,47 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="85e14c94-a521-4df6-8db6-28502d168532" name="Changes" comment="" />
+    <list default="true" id="85e14c94-a521-4df6-8db6-28502d168532" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/qualityworkshop/terminalbattleship/board/CoordinateTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/test-classes/com/qualityworkshop/terminalbattleship/board/CoordinateTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/qualityworkshop/terminalbattleship/game/GameEngineTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/qualityworkshop/terminalbattleship/game/GameEngineTest.class" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "NicolasPons"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;NicolasPons&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/DrivoireFR/battleship-java.git",
-    "accountId": "31c871e0-0a97-4999-b27d-d680ed8206a0"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/DrivoireFR/battleship-java.git&quot;,
+    &quot;accountId&quot;: &quot;31c871e0-0a97-4999-b27d-d680ed8206a0&quot;
   }
-}]]></component>
+}</component>
   <component name="ProjectCodeStyleSettingsMigration">
     <option name="version" value="2" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "customColor": "",
-  "associatedIndex": 5
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 5
+}</component>
   <component name="ProjectId" id="35kDCjV5DhqMWeTXlVcjl4DDDNF" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -39,6 +52,8 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "JUnit.CoordinateTest.shouldRejectEmptyInput.executor": "Run",
+    "JUnit.CoordinateTest.shouldRejectSpacesOnlyInput.executor": "Run",
     "JUnit.GameEngineTest.shouldStoreOnlyLastThreePlayerShots.executor": "Run",
     "Maven.terminal-battleship [compile].executor": "Run",
     "Maven.terminal-battleship [verify].executor": "Run",
@@ -52,7 +67,7 @@
     "RunOnceActivity.git.unshallow": "true",
     "Spring Boot.TerminalBattleshipApplication.executor": "Run",
     "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
-    "git-widget-placeholder": "feature/NP/US2-HistoriqueCoups",
+    "git-widget-placeholder": "feature/NP/US1-ValidationInputVide",
     "junie.onboarding.icon.badge.shown": "true",
     "kotlin-language-version-configured": "true",
     "node.js.detected.package.eslint": "true",
@@ -64,7 +79,39 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RunManager" selected="JUnit.GameEngineTest.shouldStoreOnlyLastThreePlayerShots">
+  <component name="RunManager" selected="JUnit.CoordinateTest.shouldRejectSpacesOnlyInput">
+    <configuration name="CoordinateTest.shouldRejectEmptyInput" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="terminal-battleship" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.qualityworkshop.terminalbattleship.board.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.qualityworkshop.terminalbattleship.board" />
+      <option name="MAIN_CLASS_NAME" value="com.qualityworkshop.terminalbattleship.board.CoordinateTest" />
+      <option name="METHOD_NAME" value="shouldRejectEmptyInput" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CoordinateTest.shouldRejectSpacesOnlyInput" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="terminal-battleship" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.qualityworkshop.terminalbattleship.board.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.qualityworkshop.terminalbattleship.board" />
+      <option name="MAIN_CLASS_NAME" value="com.qualityworkshop.terminalbattleship.board.CoordinateTest" />
+      <option name="METHOD_NAME" value="shouldRejectSpacesOnlyInput" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="GameEngineTest.shouldStoreOnlyLastThreePlayerShots" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="terminal-battleship" />
       <extension name="coverage">
@@ -135,6 +182,8 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.CoordinateTest.shouldRejectSpacesOnlyInput" />
+        <item itemvalue="JUnit.CoordinateTest.shouldRejectEmptyInput" />
         <item itemvalue="JUnit.GameEngineTest.shouldStoreOnlyLastThreePlayerShots" />
       </list>
     </recent_temporary>
@@ -155,6 +204,7 @@
       <option name="presentableId" value="Default" />
       <updated>1763645053204</updated>
       <workItem from="1763645055518" duration="1656000" />
+      <workItem from="1763648196787" duration="125000" />
     </task>
     <servers />
   </component>

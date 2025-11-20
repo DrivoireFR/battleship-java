@@ -16,8 +16,8 @@ public record Coordinate(int row, int column) {
     public static Coordinate fromInput(String input) {
 <span class="fc" id="L17">        Objects.requireNonNull(input, &quot;input&quot;);</span>
 <span class="fc" id="L18">        String trimmed = input.trim().toUpperCase(Locale.ROOT);</span>
-<span class="pc bpc" id="L19" title="2 of 4 branches missed.">        if (trimmed.length() &lt; 2 || trimmed.length() &gt; 3) {</span>
-<span class="nc" id="L20">            throw new IllegalArgumentException(&quot;Format attendu: lettre + nombre (ex: B3)&quot;);</span>
+<span class="pc bpc" id="L19" title="1 of 4 branches missed.">        if (trimmed.length() &lt; 2 || trimmed.length() &gt; 3) {</span>
+<span class="fc" id="L20">            throw new IllegalArgumentException(&quot;Format attendu: lettre + nombre (ex: B3)&quot;);</span>
         }
 <span class="fc" id="L22">        char columnLetter = trimmed.charAt(0);</span>
 <span class="fc" id="L23">        int columnIndex = COLUMNS.indexOf(columnLetter);</span>
