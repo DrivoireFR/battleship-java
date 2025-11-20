@@ -5,6 +5,7 @@ import com.qualityworkshop.terminalbattleship.game.ShotResult;
 import com.qualityworkshop.terminalbattleship.rendering.BoardRenderer;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 @Component
@@ -12,6 +13,7 @@ public class GameRunner {
 
     private final GameEngine gameEngine;
     private final Scanner scanner;
+
 
     public GameRunner(GameEngine gameEngine) {
         this.gameEngine = gameEngine;
@@ -40,8 +42,14 @@ public class GameRunner {
     private void displayBoards() {
         System.out.println("\nVotre grille");
         System.out.println(BoardRenderer.render(gameEngine.playerBoard(), true));
+        if(!GameEngine.HistoJoueur.isEmpty()) {
+            System.out.println("\nHisto de vos trois derniers coups : " + GameEngine.HistoJoueur);
+        }
         System.out.println("\nGrille adverse (brouillard)");
         System.out.println(BoardRenderer.render(gameEngine.computerBoard(), false));
+        if(!GameEngine.HistoIA.isEmpty()) {
+            System.out.println("\nHisto des trois derniers coups de l'IA : " + GameEngine.HistoIA);
+        }
     }
 
     private ShotResult askForPlayerShot() {

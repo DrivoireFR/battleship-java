@@ -6,12 +6,16 @@ import com.qualityworkshop.terminalbattleship.strategy.ShotStrategy;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
+
 @Component
 public class GameEngine {
 
     private final Board playerBoard;
     private final Board computerBoard;
     private final ShotStrategy computerStrategy;
+    public static ArrayList<String> HistoIA = new ArrayList<>();
+    public static ArrayList<String> HistoJoueur = new ArrayList<>();
 
     public GameEngine(@Qualifier("playerBoard") Board playerBoard,
                       @Qualifier("computerBoard") Board computerBoard,
@@ -23,6 +27,10 @@ public class GameEngine {
 
     public ShotResult playerShoots(String coordinateInput) {
         Coordinate coordinate = Coordinate.fromInput(coordinateInput);
+        HistoJoueur.add(coordinate.toString());
+        if (HistoJoueur.size() > 3) {
+            HistoJoueur.remove(0); // enlève le plus ancien tir
+        }
         ShotOutcome outcome = computerBoard.shoot(coordinate);
         return new ShotResult(
                 coordinate,
@@ -33,6 +41,10 @@ public class GameEngine {
 
     public ShotResult computerShoots() {
         Coordinate target = computerStrategy.pickTarget(playerBoard);
+        HistoIA.add(target.toString());
+        if (HistoIA.size() > 3) {
+            HistoIA.remove(0); // enlève le plus ancien tir
+        }
         ShotOutcome outcome = playerBoard.shoot(target);
         return new ShotResult(
                 target,
