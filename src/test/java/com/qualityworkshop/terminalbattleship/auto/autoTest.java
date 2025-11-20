@@ -7,11 +7,12 @@ import com.qualityworkshop.terminalbattleship.game.ShotResult;
 import org.junit.jupiter.api.Test;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class GameEngineAutoShotTest {
+class autoTest {
 
     @Test
     void autoShotShouldReturnAValidResult() {
@@ -37,22 +38,27 @@ class GameEngineAutoShotTest {
 
     @Test
     void autoShouldNeverShootTheSameCellTwice() {
-        Board computer = Board.withShips(5, java.util.List.of(new Coordinate(0,0)));
-        Board player = Board.withShips(5, java.util.List.of(new Coordinate(0,0)));
+        Board computer = Board.withShips(10, List.of(
+                new Coordinate(0,0), new Coordinate(1,1), new Coordinate(2,2),
+                new Coordinate(3,3), new Coordinate(4,4)
+        ));
+        Board player = Board.withShips(5, java.util.List.of());
 
         GameEngine engine = new GameEngine(player, computer, null);
 
         Set<Coordinate> seen = new HashSet<>();
 
-        int size = computer.size() * computer.size();
-        for (int i = 0; i < size; i++) {
+        while (!engine.isComputerFleetDestroyed() && !engine.isPlayerFleetDestroyed()) {
             ShotResult result = engine.playerShootsRandom();
             assertFalse(seen.contains(result.coordinate()), "La case a été ciblée deux fois !");
             seen.add(result.coordinate());
         }
 
+        assertFalse(engine.isComputerFleetDestroyed());
+
         assertThrows(IllegalStateException.class, engine::playerShootsRandom);
     }
+
 
     @Test
     void autoShouldFailWhenGameIsAlreadyOver() {
