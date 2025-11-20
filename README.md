@@ -2,14 +2,17 @@
 
 ## Concept et objectif
 
-Terminal Battleship est un mini-projet Maven/Spring Boot conçu pour pratiquer une **démarche qualité simplifiée** à travers le développement d'un jeu "touché/coulé" en ligne de commande.
+Terminal Battleship est un mini-projet Maven/Spring Boot conçu pour pratiquer une **démarche qualité simplifiée** à
+travers le développement d'un jeu "touché/coulé" en ligne de commande.
 
 L'objectif pédagogique est de :
+
 - Implémenter quelques **User Stories** en suivant les bonnes pratiques de développement
 - Appliquer une démarche qualité avec tests unitaires, couverture de code et détection de duplication
 - Expérimenter le TDD (Test-Driven Development) et la revue de code
 
 Le projet suit une approche qualité avec :
+
 - Tests unitaires pour chaque fonctionnalité
 - Couverture de code minimale de 50% par classe (hors classes d'infrastructure)
 - Détection de duplication de code via PMD/CPD
@@ -30,11 +33,15 @@ mvn clean compile
 
 # Lancer l'application
 mvn spring-boot:run
+
+# Lancer l'application en mode silencieux
+mvn spring-boot:run -Dspring-boot.run.arguments="--quiet"
 ```
 
 ### Utilisation
 
-Une fois lancé, le jeu vous demande de saisir des coordonnées au format `lettre + chiffre` (ex: `e5`, `A3`). Tapez `quit` pour arrêter la partie.
+Une fois lancé, le jeu vous demande de saisir des coordonnées au format `lettre + chiffre` (ex: `e5`, `A3`). Tapez
+`quit` pour arrêter la partie.
 
 ## Tests et rapports de qualité
 
@@ -57,6 +64,7 @@ Après l'exécution de `mvn verify`, les rapports sont disponibles dans le répe
 **Emplacement :** `target/site/jacoco/index.html`
 
 Ouvrez ce fichier dans un navigateur pour visualiser :
+
 - La couverture globale du projet
 - La couverture par package et par classe
 - Les lignes couvertes (vertes) et non couvertes (rouges)
@@ -76,6 +84,7 @@ Affiche les blocs de code dupliqués détectés dans le projet.
 **Emplacement :** `target/surefire-reports/`
 
 Contient les résultats détaillés des tests :
+
 - `TEST-*.xml` : Rapports XML pour intégration CI/CD
 - `*.txt` : Rapports texte lisibles
 
