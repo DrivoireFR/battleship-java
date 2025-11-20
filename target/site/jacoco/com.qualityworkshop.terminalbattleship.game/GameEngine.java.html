@@ -73,30 +73,54 @@ public class GameEngine {
 <span class="fc" id="L73">        return List.copyOf(lastComputerShots);</span>
     }
 
+    // US10 : tir auto
+    public ShotResult playerAutoShot() {
+<span class="fc" id="L78">        var cells = playerBoard.untargetedCells();</span>
+<span class="pc bpc" id="L79" title="1 of 2 branches missed.">        if (cells.isEmpty()) {</span>
+<span class="nc" id="L80">            throw new IllegalStateException(&quot;Plus aucune case disponible.&quot;);</span>
+        }
+
+        // Choisir une case random
+<span class="fc" id="L84">        Coordinate randomTarget = cells.get(new java.util.Random().nextInt(cells.size()));</span>
+
+<span class="fc" id="L86">        ShotOutcome outcome = computerBoard.shoot(randomTarget);</span>
+
+<span class="fc" id="L88">        ShotResult result = new ShotResult(</span>
+                randomTarget,
+                outcome,
+<span class="pc bpc" id="L91" title="1 of 2 branches missed.">                !computerBoard.hasRemainingShips(),</span>
+<span class="fc" id="L92">                messageFor(&quot;Vous (auto)&quot;, outcome)</span>
+        );
+
+        // Si tu es en US2 : on l’ajoute à l’historique
+<span class="fc" id="L96">        recordShot(lastPlayerShots, result);</span>
+
+<span class="fc" id="L98">        return result;</span>
+    }
 
     public boolean isComputerFleetDestroyed() {
-<span class="pc bpc" id="L78" title="1 of 2 branches missed.">        return !computerBoard.hasRemainingShips();</span>
+<span class="pc bpc" id="L102" title="1 of 2 branches missed.">        return !computerBoard.hasRemainingShips();</span>
     }
 
     public boolean isPlayerFleetDestroyed() {
-<span class="pc bpc" id="L82" title="1 of 2 branches missed.">        return !playerBoard.hasRemainingShips();</span>
+<span class="pc bpc" id="L106" title="1 of 2 branches missed.">        return !playerBoard.hasRemainingShips();</span>
     }
 
     public Board playerBoard() {
-<span class="nc" id="L86">        return playerBoard;</span>
+<span class="nc" id="L110">        return playerBoard;</span>
     }
 
     public Board computerBoard() {
-<span class="nc" id="L90">        return computerBoard;</span>
+<span class="nc" id="L114">        return computerBoard;</span>
     }
 
     private String messageFor(String shooter, ShotOutcome outcome) {
-<span class="pc bpc" id="L94" title="1 of 5 branches missed.">        return switch (outcome) {</span>
-<span class="fc" id="L95">            case HIT -&gt; shooter + &quot; a touché un navire !&quot;;</span>
-<span class="fc" id="L96">            case MISS -&gt; shooter + &quot; a tiré dans l'eau.&quot;;</span>
-<span class="fc" id="L97">            case ALREADY_TARGETED -&gt; shooter + &quot; avait déjà visé cette case.&quot;;</span>
-<span class="nc" id="L98">            case INVALID -&gt; shooter + &quot; a visé hors de la grille !&quot;;</span>
-<span class="fc" id="L99">            case ALL_SUNK -&gt; shooter + &quot; vient de couler la dernière cible !&quot;;</span>
+<span class="pc bpc" id="L118" title="1 of 5 branches missed.">        return switch (outcome) {</span>
+<span class="fc" id="L119">            case HIT -&gt; shooter + &quot; a touché un navire !&quot;;</span>
+<span class="fc" id="L120">            case MISS -&gt; shooter + &quot; a tiré dans l'eau.&quot;;</span>
+<span class="fc" id="L121">            case ALREADY_TARGETED -&gt; shooter + &quot; avait déjà visé cette case.&quot;;</span>
+<span class="nc" id="L122">            case INVALID -&gt; shooter + &quot; a visé hors de la grille !&quot;;</span>
+<span class="fc" id="L123">            case ALL_SUNK -&gt; shooter + &quot; vient de couler la dernière cible !&quot;;</span>
         };
     }
 }
