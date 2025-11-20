@@ -12,6 +12,7 @@ public class GameRunner {
 
     private final GameEngine gameEngine;
     private final Scanner scanner;
+    private boolean isQuietModeEnabled;
 
     public GameRunner(GameEngine gameEngine) {
         this.gameEngine = gameEngine;
@@ -19,34 +20,35 @@ public class GameRunner {
     }
 
     public void start() {
-        System.out.println("Bienvenue dans Terminal Battleship ! Tapez 'quit' pour arrêter.\n");
+        printMessage("Bienvenue dans Terminal Battleship ! Tapez 'quit' pour arrêter.\n", false);
         while (!gameEngine.isComputerFleetDestroyed() && !gameEngine.isPlayerFleetDestroyed()) {
             displayBoards();
             ShotResult playerResult = askForPlayerShot();
-            System.out.println(playerResult.message());
+            printMessage(playerResult.message(), false);
             if (playerResult.gameOver()) {
                 break;
             }
 
             ShotResult computerResult = gameEngine.computerShoots();
-            System.out.println("\nOrdinateur: " + computerResult.message());
+            printMessage("\nOrdinateur: " + computerResult.message(), false);
+
             if (computerResult.gameOver()) {
                 break;
-            }
+             }
         }
         endGameMessage();
     }
 
     private void displayBoards() {
-        System.out.println("\nVotre grille");
-        System.out.println(BoardRenderer.render(gameEngine.playerBoard(), true));
-        System.out.println("\nGrille adverse (brouillard)");
-        System.out.println(BoardRenderer.render(gameEngine.computerBoard(), false));
+        printMessage("\nVotre grille", true);
+        printMessage(BoardRenderer.render(gameEngine.playerBoard(), true), true);
+        printMessage("\nGrille adverse (brouillard)", true);
+        printMessage(BoardRenderer.render(gameEngine.computerBoard(), false), true);
     }
 
     private ShotResult askForPlayerShot() {
         while (true) {
-            System.out.print("Entrez une coordonnée (ex: e5): ");
+            printMessage("Entrez une coordonnée (ex: e5): ", true);
             String input = scanner.nextLine().trim();
             if (input.equalsIgnoreCase("quit")) {
                 System.exit(0);
@@ -54,18 +56,32 @@ public class GameRunner {
             try {
                 return gameEngine.playerShoots(input);
             } catch (IllegalArgumentException ex) {
-                System.out.println("Entrée invalide: " + ex.getMessage());
+                printMessage("Entrée invalide: " + ex.getMessage(), false);
             }
         }
     }
 
     private void endGameMessage() {
         if (gameEngine.isComputerFleetDestroyed()) {
-            System.out.println("\nBravo, vous avez coulé tous les navires adverses!");
+            printMessage("\nBravo, vous avez coulé tous les navires adverses!", false);
         } else if (gameEngine.isPlayerFleetDestroyed()) {
-            System.out.println("\nDommage! L'ordinateur a gagné cette fois.");
+            printMessage("\nDommage! L'ordinateur a gagné cette fois.", false);
         } else {
-            System.out.println("\nPartie interrompue.");
+            printMessage("\nPartie interrompue.", false);
         }
+    }
+
+    private void printMessage(String message, boolean important){
+        if (!isQuietModeEnabled() || important) {
+            System.out.println(message);
+        }
+    }
+
+    public void setQuietMode(boolean quietMode) {
+        this.isQuietModeEnabled = quietMode;
+    }
+
+    public boolean isQuietModeEnabled(){
+        return isQuietModeEnabled;
     }
 }
