@@ -82,4 +82,48 @@ class CoordinateTest {
         assertThatThrownBy(() -> Coordinate.fromInput("123"))
                 .isInstanceOf(IllegalArgumentException.class);
     }
+
+    // ===== Tests pour US4: Mode Grille Réduite =====
+
+    @Test
+    void shouldAcceptMiniGridCoordinate() {
+        Coordinate coord = Coordinate.fromInput("A1", 4);
+        assertThat(coord.row()).isEqualTo(0);
+        assertThat(coord.column()).isEqualTo(0);
+    }
+
+    @Test
+    void shouldAcceptD4OnMiniGrid() {
+        Coordinate coord = Coordinate.fromInput("D4", 4);
+        assertThat(coord.row()).isEqualTo(3);
+        assertThat(coord.column()).isEqualTo(3);
+    }
+
+    @Test
+    void shouldRejectE1OnMiniGrid() {
+        assertThatThrownBy(() -> Coordinate.fromInput("E1", 4))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("hors grille");
+    }
+
+    @Test
+    void shouldRejectA5OnMiniGrid() {
+        assertThatThrownBy(() -> Coordinate.fromInput("A5", 4))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("ligne");
+    }
+
+    @Test
+    void shouldStillAcceptF6OnNormalGrid() {
+        Coordinate coord = Coordinate.fromInput("F6", 6);
+        assertThat(coord.row()).isEqualTo(5);
+        assertThat(coord.column()).isEqualTo(5);
+    }
+
+    @Test
+    void shouldRejectG1OnNormalGrid() {
+        assertThatThrownBy(() -> Coordinate.fromInput("G1", 6))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("hors grille");
+    }
 }
