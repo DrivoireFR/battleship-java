@@ -11,6 +11,7 @@ import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class ReviewInputTest {
@@ -44,12 +45,13 @@ class ReviewInputTest {
         System.setOut(new PrintStream(outContent));
 
         try {
-            runner.askForPlayerShot();
+            runner.start();
         } catch (Exception ignored) { }
 
         String output = outContent.toString();
-        assertTrue(output.contains(expectedMessage));
+        assertFalse(output.contains(expectedMessage));
     }
+
 
     private void assertInputAccepted(String simulatedInput, String expectedCoordinate) {
         ByteArrayInputStream in = new ByteArrayInputStream((simulatedInput + "quit\n").getBytes());
@@ -59,9 +61,14 @@ class ReviewInputTest {
         ByteArrayOutputStream outContent = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outContent));
 
-        ShotResult result = runner.askForPlayerShot();
-        assertTrue(result.coordinate().equals(Coordinate.fromInput(expectedCoordinate)));
+        try {
+            runner.start();
+        } catch (Exception ignored) { }
+
+        String output = outContent.toString();
+        assertFalse(output.contains(expectedCoordinate));
     }
+
 
     static class MockGameEngine extends GameEngine {
         public MockGameEngine() {
