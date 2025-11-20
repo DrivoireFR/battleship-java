@@ -14,7 +14,7 @@ public class GameEngine {
     private final Board playerBoard;
     private final Board computerBoard;
     private final ShotStrategy computerStrategy;
-    private static ArrayList<String> HistoriqueTirJoueurAléatoire = new ArrayList<>();
+    static ArrayList<String> HistoriqueTirJoueurAléatoire = new ArrayList<>();
 
     public GameEngine(@Qualifier("playerBoard") Board playerBoard,
                       @Qualifier("computerBoard") Board computerBoard,

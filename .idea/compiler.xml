@@ -9,5 +9,8 @@
         <module name="terminal-battleship" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="terminal-battleship" target="17" />
+    </bytecodeTargetLevel>
   </component>
 </project>
