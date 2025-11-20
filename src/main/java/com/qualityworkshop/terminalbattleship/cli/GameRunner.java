@@ -50,7 +50,6 @@ public class GameRunner {
             System.out.print("Entrez une coordonnée (ex: e5) ou 'help': ");
             String input = scanner.nextLine().trim();
 
-            System.out.println(timer.displayElapsedTime());
 
             if (input.equalsIgnoreCase("quit")) {
                 System.exit(0);
