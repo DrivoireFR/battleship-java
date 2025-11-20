@@ -17,7 +17,9 @@ class GameEngineTest {
     void shouldReturnHitAndMarkBoard() {
         Board playerBoard = Board.withShips(6, List.of(new Coordinate(0, 0)));
         Board computerBoard = Board.withShips(6, List.of(new Coordinate(0, 0)));
-        GameEngine engine = new GameEngine(playerBoard, computerBoard, new NoOpComputerStrategy(new Coordinate(1, 1)));
+        GameEngine engine = new GameEngine(playerBoard, computerBoard,
+                new NoOpComputerStrategy(new Coordinate(1, 1)),
+                6);  // ⚠️ AJOUT DU 4ÈME PARAMÈTRE
 
         ShotResult result = engine.playerShoots("A1");
 
@@ -30,7 +32,9 @@ class GameEngineTest {
     void shouldRejectInvalidCoordinate() {
         Board playerBoard = Board.withShips(6, List.of(new Coordinate(0, 0)));
         Board computerBoard = Board.withShips(6, List.of(new Coordinate(0, 0)));
-        GameEngine engine = new GameEngine(playerBoard, computerBoard, new NoOpComputerStrategy(new Coordinate(1, 1)));
+        GameEngine engine = new GameEngine(playerBoard, computerBoard,
+                new NoOpComputerStrategy(new Coordinate(1, 1)),
+                6);  // ⚠️ AJOUT DU 4ÈME PARAMÈTRE
 
         assertThatThrownBy(() -> engine.playerShoots("Z9"))
                 .isInstanceOf(IllegalArgumentException.class);
@@ -40,7 +44,9 @@ class GameEngineTest {
     void shouldAcceptLowercaseInput() {
         Board playerBoard = Board.withShips(6, List.of(new Coordinate(0, 0)));
         Board computerBoard = Board.withShips(6, List.of(new Coordinate(0, 0)));
-        GameEngine engine = new GameEngine(playerBoard, computerBoard, new NoOpComputerStrategy(new Coordinate(1, 1)));
+        GameEngine engine = new GameEngine(playerBoard, computerBoard,
+                new NoOpComputerStrategy(new Coordinate(1, 1)),
+                6);  // ⚠️ AJOUT DU 4ÈME PARAMÈTRE
 
         ShotResult result = engine.playerShoots("a1");
 
@@ -51,7 +57,9 @@ class GameEngineTest {
     void shouldRejectMixedInput() {
         Board playerBoard = Board.withShips(6, List.of(new Coordinate(0, 0)));
         Board computerBoard = Board.withShips(6, List.of(new Coordinate(0, 0)));
-        GameEngine engine = new GameEngine(playerBoard, computerBoard, new NoOpComputerStrategy(new Coordinate(1, 1)));
+        GameEngine engine = new GameEngine(playerBoard, computerBoard,
+                new NoOpComputerStrategy(new Coordinate(1, 1)),
+                6);  // ⚠️ AJOUT DU 4ÈME PARAMÈTRE
 
         assertThatThrownBy(() -> engine.playerShoots("5E"))
                 .isInstanceOf(IllegalArgumentException.class);
@@ -61,7 +69,9 @@ class GameEngineTest {
     void shouldFlagAlreadyTargetedCell() {
         Board playerBoard = Board.withShips(6, List.of(new Coordinate(0, 0)));
         Board computerBoard = Board.withShips(6, List.of(new Coordinate(0, 0)));
-        GameEngine engine = new GameEngine(playerBoard, computerBoard, new NoOpComputerStrategy(new Coordinate(1, 1)));
+        GameEngine engine = new GameEngine(playerBoard, computerBoard,
+                new NoOpComputerStrategy(new Coordinate(1, 1)),
+                6);  // ⚠️ AJOUT DU 4ÈME PARAMÈTRE
 
         engine.playerShoots("A1");
         ShotResult secondShot = engine.playerShoots("A1");
@@ -73,7 +83,9 @@ class GameEngineTest {
     void shouldAllowComputerToFire() {
         Board playerBoard = Board.withShips(6, List.of(new Coordinate(0, 0)));
         Board computerBoard = Board.withShips(6, List.of(new Coordinate(0, 1)));
-        GameEngine engine = new GameEngine(playerBoard, computerBoard, new NoOpComputerStrategy(new Coordinate(0, 0)));
+        GameEngine engine = new GameEngine(playerBoard, computerBoard,
+                new NoOpComputerStrategy(new Coordinate(0, 0)),
+                6);  // ⚠️ AJOUT DU 4ÈME PARAMÈTRE
 
         ShotResult computerShot = engine.computerShoots();
 

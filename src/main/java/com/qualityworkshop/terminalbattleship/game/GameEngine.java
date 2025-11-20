@@ -12,17 +12,20 @@ public class GameEngine {
     private final Board playerBoard;
     private final Board computerBoard;
     private final ShotStrategy computerStrategy;
+    private final int boardSize;  // ⚠️ AJOUTEZ CETTE LIGNE
 
     public GameEngine(@Qualifier("playerBoard") Board playerBoard,
                       @Qualifier("computerBoard") Board computerBoard,
-                      ShotStrategy computerStrategy) {
+                      ShotStrategy computerStrategy,
+                      @Qualifier("boardSize") int boardSize) {  // ⚠️ AJOUTEZ CE PARAMÈTRE
         this.playerBoard = playerBoard;
         this.computerBoard = computerBoard;
         this.computerStrategy = computerStrategy;
+        this.boardSize = boardSize;  // ⚠️ AJOUTEZ CETTE LIGNE
     }
 
     public ShotResult playerShoots(String coordinateInput) {
-        Coordinate coordinate = Coordinate.fromInput(coordinateInput);
+        Coordinate coordinate = Coordinate.fromInput(coordinateInput, boardSize);  // ⚠️ MODIFIEZ ICI
         ShotOutcome outcome = computerBoard.shoot(coordinate);
         return new ShotResult(
                 coordinate,
