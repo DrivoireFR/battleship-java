@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 import java.util.Scanner;
 
 @Component
-public class GameRunner {
+public abstract class GameRunner {
 
     private final GameEngine gameEngine;
     private final Scanner scanner;
@@ -44,13 +44,22 @@ public class GameRunner {
         System.out.println(BoardRenderer.render(gameEngine.computerBoard(), false));
     }
 
-    private ShotResult askForPlayerShot() {
+    public ShotResult askForPlayerShot() {
         while (true) {
-            System.out.print("Entrez une coordonnée (ex: e5): ");
+
+            System.out.print("Entrez une coordonnée (ex: e5) ou 'help': ");
             String input = scanner.nextLine().trim();
+
+
             if (input.equalsIgnoreCase("quit")) {
                 System.exit(0);
             }
+
+            if (input.equalsIgnoreCase("help")) {
+                afficherRegles();
+                continue;
+            }
+
             try {
                 return gameEngine.playerShoots(input);
             } catch (IllegalArgumentException ex) {
@@ -58,6 +67,7 @@ public class GameRunner {
             }
         }
     }
+
 
     private void endGameMessage() {
         if (gameEngine.isComputerFleetDestroyed()) {
@@ -68,4 +78,17 @@ public class GameRunner {
             System.out.println("\nPartie interrompue.");
         }
     }
+
+    private void afficherRegles() {
+        String regles = """
+        Règles du jeu :
+        - Chaque joueur tire à tour de rôle.
+        - Tapez une coordonnée (ex: e5) pour tirer.
+        - Tapez 'help' pour voir ces règles à tout moment.
+        - Tapez 'quit' pour quitter la partie.
+        """;
+        System.out.println(regles);
+    }
+
+    protected abstract void exitGame();
 }
