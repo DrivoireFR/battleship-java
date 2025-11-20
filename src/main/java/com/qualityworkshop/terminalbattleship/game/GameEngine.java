@@ -21,15 +21,23 @@ public class GameEngine {
         this.computerStrategy = computerStrategy;
     }
 
-    public ShotResult playerShoots(String coordinateInput) {
-        Coordinate coordinate = Coordinate.fromInput(coordinateInput);
-        ShotOutcome outcome = computerBoard.shoot(coordinate);
+    public ShotResult playerShootsRandom() {
+        if (isComputerFleetDestroyed() || isPlayerFleetDestroyed()) {
+            throw new IllegalStateException("La partie est déjà terminée.");
+        }
+
+        Coordinate target = computerBoard.pickRandomUntargeted();
+
+        ShotOutcome outcome = computerBoard.shoot(target);
+
         return new ShotResult(
-                coordinate,
+                target,
                 outcome,
                 !computerBoard.hasRemainingShips(),
-                messageFor("Vous", outcome));
+                messageFor("Vous (auto)", outcome)
+        );
     }
+
 
     public ShotResult computerShoots() {
         Coordinate target = computerStrategy.pickTarget(playerBoard);
@@ -39,6 +47,16 @@ public class GameEngine {
                 outcome,
                 !playerBoard.hasRemainingShips(),
                 messageFor("L'ordinateur", outcome));
+    }
+
+    public ShotResult playerShoots(String coordinateInput) {
+        Coordinate coordinate = Coordinate.fromInput(coordinateInput);
+        ShotOutcome outcome = computerBoard.shoot(coordinate);
+        return new ShotResult(
+                coordinate,
+                outcome,
+                !computerBoard.hasRemainingShips(),
+                messageFor("Vous", outcome));
     }
 
     public boolean isComputerFleetDestroyed() {

@@ -109,5 +109,27 @@ public class Board {
     private boolean isInside(Coordinate coordinate) {
 <span class="pc bpc" id="L110" title="4 of 8 branches missed.">        return coordinate.row() &gt;= 0 &amp;&amp; coordinate.row() &lt; size &amp;&amp; coordinate.column() &gt;= 0 &amp;&amp; coordinate.column() &lt; size;</span>
     }
+
+    public Coordinate pickRandomUntargeted() {
+<span class="nc" id="L114">        List&lt;Coordinate&gt; available = new ArrayList&lt;&gt;();</span>
+
+<span class="nc bnc" id="L116" title="All 2 branches missed.">        for (int row = 0; row &lt; size; row++) {</span>
+<span class="nc bnc" id="L117" title="All 2 branches missed.">            for (int col = 0; col &lt; size; col++) {</span>
+<span class="nc" id="L118">                CellState state = grid[row][col];</span>
+
+<span class="nc bnc" id="L120" title="All 4 branches missed.">                if (state != CellState.HIT &amp;&amp; state != CellState.MISS) {</span>
+<span class="nc" id="L121">                    available.add(new Coordinate(row, col));</span>
+                }
+            }
+        }
+
+<span class="nc bnc" id="L126" title="All 2 branches missed.">        if (available.isEmpty()) {</span>
+<span class="nc" id="L127">            throw new IllegalStateException(&quot;Plus aucune case disponible !&quot;);</span>
+        }
+
+<span class="nc" id="L130">        Collections.shuffle(available);</span>
+<span class="nc" id="L131">        return available.get(0);</span>
+    }
+
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

@@ -109,4 +109,26 @@ public class Board {
     private boolean isInside(Coordinate coordinate) {
         return coordinate.row() >= 0 && coordinate.row() < size && coordinate.column() >= 0 && coordinate.column() < size;
     }
+
+    public Coordinate pickRandomUntargeted() {
+        List<Coordinate> available = new ArrayList<>();
+
+        for (int row = 0; row < size; row++) {
+            for (int col = 0; col < size; col++) {
+                CellState state = grid[row][col];
+
+                if (state != CellState.HIT && state != CellState.MISS) {
+                    available.add(new Coordinate(row, col));
+                }
+            }
+        }
+
+        if (available.isEmpty()) {
+            throw new IllegalStateException("Plus aucune case disponible !");
+        }
+
+        Collections.shuffle(available);
+        return available.get(0);
+    }
+
 }
