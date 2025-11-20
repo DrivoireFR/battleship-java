@@ -80,6 +80,13 @@ public class GameRunner {
                 continue;
             }
 
+            // US10 : commande auto
+            if (input.equalsIgnoreCase("auto")) {
+                ShotResult autoResult = gameEngine.playerAutoShot();
+                System.out.println("[AUTO] Tir automatique sur : " + autoResult.coordinate());
+                return autoResult;
+            }
+
             if (!isInputValid(input)) {
                 System.out.println("Entrée invalide : vous devez saisir une coordonnée.");
                 continue;

@@ -73,6 +73,30 @@ public class GameEngine {
         return List.copyOf(lastComputerShots);
     }
 
+    // US10 : tir auto
+    public ShotResult playerAutoShot() {
+        var cells = playerBoard.untargetedCells();
+        if (cells.isEmpty()) {
+            throw new IllegalStateException("Plus aucune case disponible.");
+        }
+
+        // Choisir une case random
+        Coordinate randomTarget = cells.get(new java.util.Random().nextInt(cells.size()));
+
+        ShotOutcome outcome = computerBoard.shoot(randomTarget);
+
+        ShotResult result = new ShotResult(
+                randomTarget,
+                outcome,
+                !computerBoard.hasRemainingShips(),
+                messageFor("Vous (auto)", outcome)
+        );
+
+        // Si tu es en US2 : on l’ajoute à l’historique
+        recordShot(lastPlayerShots, result);
+
+        return result;
+    }
 
     public boolean isComputerFleetDestroyed() {
         return !computerBoard.hasRemainingShips();

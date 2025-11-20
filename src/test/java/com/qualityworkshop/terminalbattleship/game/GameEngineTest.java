@@ -137,5 +137,18 @@ class GameEngineTest {
         assertThat(history).hasSize(3);
     }
 
+    @Test
+    void shouldFireAutomaticallyOnRandomCell() {
+        Board playerBoard = Board.withShips(6, List.of(new Coordinate(5,5))); // useless board for player
+        Board computerBoard = Board.withShips(6, List.of(new Coordinate(2,2)));
+        GameEngine engine = new GameEngine(playerBoard, computerBoard, new NoOpComputerStrategy(new Coordinate(0,0)));
+
+        ShotResult result = engine.playerAutoShot();
+
+        assertThat(result.coordinate()).isNotNull();
+        assertThat(result.outcome()).isNotEqualTo(ShotOutcome.ALREADY_TARGETED);
+    }
+
+
 }
 
