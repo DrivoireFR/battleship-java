@@ -2,8 +2,8 @@ package com.qualityworkshop.terminalbattleship.timer;
 
 public class Timer {
 
-    private long startTime;
-    private long endTime;
+    long startTime;
+    long endTime;
 
     public void start() {
         startTime = System.currentTimeMillis();
@@ -16,6 +16,13 @@ public class Timer {
     public String displayElapsedTime() {
         long elapsedMs = endTime - startTime;
         double elapsedSeconds = elapsedMs / 1000.0;
-        return String.format("Réponse en %.2f secondes", elapsedSeconds);
+
+        if (elapsedSeconds < 1) {
+            return "Délai très court (<1 seconde)";
+        } else if (elapsedSeconds > 60) {
+            return String.format("Délai trop long (%.2f secondes)", elapsedSeconds);
+        } else {
+            return String.format("Réponse en %.2f secondes", elapsedSeconds);
+        }
     }
 }

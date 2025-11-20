@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="fr"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Timer.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Terminal Battleship</a> &gt; <a href="index.source.html" class="el_package">com.qualityworkshop.terminalbattleship.timer</a> &gt; <span class="el_source">Timer.java</span></div><h1>Timer.java</h1><pre class="source lang-java linenums">package com.qualityworkshop.terminalbattleship.timer;
+
+<span class="fc" id="L3">public class Timer {</span>
+
+    long startTime;
+    long endTime;
+
+    public void start() {
+<span class="fc" id="L9">        startTime = System.currentTimeMillis();</span>
+<span class="fc" id="L10">    }</span>
+
+    public void stop() {
+<span class="fc" id="L13">        endTime = System.currentTimeMillis();</span>
+<span class="fc" id="L14">    }</span>
+
+    public String displayElapsedTime() {
+<span class="fc" id="L17">        long elapsedMs = endTime - startTime;</span>
+<span class="fc" id="L18">        double elapsedSeconds = elapsedMs / 1000.0;</span>
+
+<span class="fc bfc" id="L20" title="All 2 branches covered.">        if (elapsedSeconds &lt; 1) {</span>
+<span class="fc" id="L21">            return &quot;Délai très court (&lt;1 seconde)&quot;;</span>
+<span class="fc bfc" id="L22" title="All 2 branches covered.">        } else if (elapsedSeconds &gt; 60) {</span>
+<span class="fc" id="L23">            return String.format(&quot;Délai trop long (%.2f secondes)&quot;, elapsedSeconds);</span>
+        } else {
+<span class="fc" id="L25">            return String.format(&quot;Réponse en %.2f secondes&quot;, elapsedSeconds);</span>
+        }
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>
