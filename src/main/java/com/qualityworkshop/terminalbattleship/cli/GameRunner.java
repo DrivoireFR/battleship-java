@@ -1,10 +1,12 @@
 package com.qualityworkshop.terminalbattleship.cli;
 
 import com.qualityworkshop.terminalbattleship.game.GameEngine;
+import com.qualityworkshop.terminalbattleship.game.GameExport;
 import com.qualityworkshop.terminalbattleship.game.ShotResult;
 import com.qualityworkshop.terminalbattleship.rendering.BoardRenderer;
 import org.springframework.stereotype.Component;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 @Component
@@ -13,12 +15,14 @@ public class GameRunner {
     private final GameEngine gameEngine;
     private final Scanner scanner;
 
+    private boolean isExportGame;
+
     public GameRunner(GameEngine gameEngine) {
         this.gameEngine = gameEngine;
         this.scanner = new Scanner(System.in);
     }
 
-    public void start() {
+    public void start() throws IOException {
         System.out.println("Bienvenue dans Terminal Battleship ! Tapez 'quit' pour arrêter.\n");
         while (!gameEngine.isComputerFleetDestroyed() && !gameEngine.isPlayerFleetDestroyed()) {
             displayBoards();
@@ -35,6 +39,10 @@ public class GameRunner {
             }
         }
         endGameMessage();
+        if (isExportGame()) {
+            GameExport gameExport = new GameExport(gameEngine);
+            gameExport.exportCurrentViewToDefaultFile();
+        }
     }
 
     private void displayBoards() {
@@ -67,5 +75,13 @@ public class GameRunner {
         } else {
             System.out.println("\nPartie interrompue.");
         }
+    }
+
+    public void setExportGame(boolean exportGame) {
+        isExportGame = exportGame;
+    }
+
+    public boolean isExportGame(){
+        return isExportGame;
     }
 }

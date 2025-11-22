@@ -5,6 +5,8 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import java.io.IOException;
+
 @SpringBootApplication
 public class TerminalBattleshipApplication implements CommandLineRunner {
 
@@ -18,8 +20,16 @@ public class TerminalBattleshipApplication implements CommandLineRunner {
         SpringApplication.run(TerminalBattleshipApplication.class, args);
     }
 
-    @Override
-    public void run(String... args) {
+    public void run(String... args) throws IOException {
+        gameRunner.setExportGame(false);
+
+        for (String arg : args) {
+            if ("--export".equals(arg)) {
+                gameRunner.setExportGame(true);
+                break;
+            }
+        }
+
         gameRunner.start();
     }
 }
