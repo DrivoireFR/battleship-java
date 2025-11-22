@@ -30,6 +30,9 @@ mvn clean compile
 
 # Lancer l'application
 mvn spring-boot:run
+
+# Lancer l'application avec export
+mvn spring-boot:run -Dspring-boot.run.arguments="--export"
 ```
 
 ### Utilisation
